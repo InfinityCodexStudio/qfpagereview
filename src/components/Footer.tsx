@@ -10,7 +10,7 @@ import {
   WHATSAPP_NUMBER,
   EMAIL
 } from '@/lib/tracking';
-import logoFull from '@/assets/QF_Logo.png';
+import logoIcon from '@/assets/QF_Logo_Sticker.png';
 
 export const Footer = () => {
   return (
@@ -19,12 +19,15 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand + Contact */}
           <div className="lg:col-span-1">
-            <div className="mb-4">
+            <div className="flex items-center gap-3 mb-4">
               <img 
-                src={logoFull} 
-                alt="QuickFix Malta" 
-                className="h-16 brightness-0 invert"
+                src={logoIcon} 
+                alt="QuickFix" 
+                className="h-12 w-12 brightness-0 invert"
               />
+              <span className="font-bold text-background text-xl tracking-wide">
+                QUICKFIX
+              </span>
             </div>
             <p className="text-background/70 text-sm mb-4">
               Trusted device repairs in Malta. Fast turnaround, quality parts, 90-day guarantee.

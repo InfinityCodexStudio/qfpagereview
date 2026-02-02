@@ -9,6 +9,7 @@ import { Locations } from '@/components/Locations';
 import { Testimonials } from '@/components/Testimonials';
 import { ProtectYourDevice } from '@/components/ProtectYourDevice';
 import { FAQ } from '@/components/FAQ';
+import { BookingForm } from '@/components/BookingForm';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { StickyCTA } from '@/components/StickyCTA';
@@ -31,6 +32,7 @@ const Index = () => {
         <Testimonials />
         <ProtectYourDevice />
         <FAQ />
+        <BookingForm />
         <FinalCTA />
       </main>
 

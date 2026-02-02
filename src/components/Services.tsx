@@ -1,31 +1,36 @@
 import { Smartphone, Tablet, Laptop, Monitor, Gamepad2, HardDrive, ArrowRight } from 'lucide-react';
-import { trackEvent, getWhatsAppUrlForDataRecovery } from '@/lib/tracking';
+import { trackEvent, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService } from '@/lib/tracking';
 
 const services = [
   {
     icon: Smartphone,
     title: 'Smartphones',
     description: 'iPhone, Samsung, Huawei, Xiaomi, and more. Screen, battery, port repairs.',
+    serviceType: 'smartphone',
   },
   {
     icon: Tablet,
     title: 'Tablets',
     description: 'iPad and Android tablets. Screen replacements and battery fixes.',
+    serviceType: 'tablet',
   },
   {
     icon: Laptop,
     title: 'Laptops',
     description: 'All brands. Screen, keyboard, battery, and hardware repairs.',
+    serviceType: 'laptop',
   },
   {
     icon: Monitor,
     title: 'Computers',
     description: 'Desktop repairs, upgrades, and diagnostics.',
+    serviceType: 'computer',
   },
   {
     icon: Gamepad2,
     title: 'Game Consoles',
     description: 'PlayStation, Xbox, Nintendo. HDMI, disc drive, controller fixes.',
+    serviceType: 'game console',
   },
   {
     icon: HardDrive,
@@ -58,9 +63,9 @@ export const Services = () => {
           {services.map((service, index) => (
             <a
               key={index}
-              href={service.isDataRecovery ? getWhatsAppUrlForDataRecovery() : "#book"}
-              target={service.isDataRecovery ? "_blank" : undefined}
-              rel={service.isDataRecovery ? "noopener noreferrer" : undefined}
+              href={service.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForService(service.serviceType || service.title)}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => handleServiceClick(service.title)}
               className="group p-6 bg-card rounded-xl border border-border card-hover"
             >
