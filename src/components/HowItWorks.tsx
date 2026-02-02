@@ -13,7 +13,7 @@ const steps = [
     step: '2',
     emoji: '📍',
     title: 'Visit or we collect',
-    description: 'Walk into Żebbuġ or Fgura, or we pick up from anywhere in Malta (€5 fee).',
+    description: 'Walk into Żebbuġ or Fgura, or we collect from anywhere in Malta.',
   },
   {
     icon: Wrench,

@@ -30,7 +30,7 @@ export const PickupDelivery = () => {
                 <li>• <span className="font-medium text-foreground">Round trip (we collect and return):</span> €30</li>
               </ul>
               <p className="text-sm text-muted-foreground mt-2">
-                We'll collect your device, fix it, and bring it back — usually same day.
+                We'll collect your device, fix it, and bring it back, usually same day.
               </p>
             </div>
 

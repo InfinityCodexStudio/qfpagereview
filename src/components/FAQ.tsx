@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     question: "What's the diagnostic fee?",
-    answer: '€30 — waived if you proceed with repair. For repairs under €100, we often fix on the spot.',
+    answer: '€30, waived if you proceed with repair. For repairs under €100, we often fix on the spot.',
   },
   {
     question: 'Which brands do you repair?',

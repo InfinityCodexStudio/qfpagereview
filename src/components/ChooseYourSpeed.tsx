@@ -119,7 +119,7 @@ export const ChooseYourSpeed = () => {
 
         {/* Note below cards */}
         <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
-          Can't make it to our shop? We'll collect your device, fix it, and bring it back — often same day.
+          Can't make it to our shop? We'll collect your device, fix it, and bring it back, often same day.
         </p>
       </div>
     </section>

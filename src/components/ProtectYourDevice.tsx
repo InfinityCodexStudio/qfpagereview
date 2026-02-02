@@ -109,7 +109,7 @@ export const ProtectYourDevice = () => {
             <div className="flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1 text-center md:text-left">
                 <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-                  🎁 Protection Pack — €45
+                  🎁 Protection Pack: €45
                 </h3>
                 <p className="text-muted-foreground mb-3">
                   ProtectionPro film + Extended warranty

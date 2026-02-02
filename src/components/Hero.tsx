@@ -93,7 +93,7 @@ export const Hero = () => {
 
           {/* Local touch */}
           <p className="text-sm text-muted-foreground mt-4 animate-slide-up" style={{ animationDelay: '0.5s' }}>
-            Serving Żebbuġ, Fgura, and all of Malta since 2018
+            Serving Żebbuġ, Fgura, and all of Malta since 2020
           </p>
         </div>
       </div>

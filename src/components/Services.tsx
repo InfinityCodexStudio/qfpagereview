@@ -1,5 +1,5 @@
-import { Smartphone, Tablet, Laptop, Monitor, Gamepad2, ArrowRight } from 'lucide-react';
-import { trackEvent } from '@/lib/tracking';
+import { Smartphone, Tablet, Laptop, Monitor, Gamepad2, HardDrive, ArrowRight } from 'lucide-react';
+import { trackEvent, getWhatsAppUrlForDataRecovery } from '@/lib/tracking';
 
 const services = [
   {
@@ -27,6 +27,12 @@ const services = [
     title: 'Game Consoles',
     description: 'PlayStation, Xbox, Nintendo. HDMI, disc drive, controller fixes.',
   },
+  {
+    icon: HardDrive,
+    title: 'Data Recovery',
+    description: 'Lost photos, contacts, or files? We recover data from damaged devices.',
+    isDataRecovery: true,
+  },
 ];
 
 export const Services = () => {
@@ -48,11 +54,13 @@ export const Services = () => {
         </div>
 
         {/* Service grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {services.map((service, index) => (
             <a
               key={index}
-              href="#book"
+              href={service.isDataRecovery ? getWhatsAppUrlForDataRecovery() : "#book"}
+              target={service.isDataRecovery ? "_blank" : undefined}
+              rel={service.isDataRecovery ? "noopener noreferrer" : undefined}
               onClick={() => handleServiceClick(service.title)}
               className="group p-6 bg-card rounded-xl border border-border card-hover"
             >

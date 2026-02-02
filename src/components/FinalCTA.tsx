@@ -46,7 +46,7 @@ export const FinalCTA = () => {
           </div>
 
           <p className="text-primary-foreground/80 text-lg">
-            Or walk into our Żebbuġ or Fgura shop — no appointment needed.
+            Or walk into our Żebbuġ or Fgura shop, no appointment needed.
           </p>
         </div>
       </div>
