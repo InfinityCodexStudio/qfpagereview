@@ -26,11 +26,11 @@ export const PickupDelivery = () => {
                 Pickup and delivery anywhere in Malta.
               </p>
               <ul className="text-sm text-muted-foreground space-y-1">
-                <li>• <span className="font-medium text-foreground">Standard:</span> €5</li>
-                <li>• <span className="font-medium text-foreground">Same-day return:</span> €10</li>
+                <li>• <span className="font-medium text-foreground">One-way (pickup OR delivery):</span> €15</li>
+                <li>• <span className="font-medium text-foreground">Round trip (we collect and return):</span> €30</li>
               </ul>
               <p className="text-sm text-muted-foreground mt-2">
-                We collect your device, fix it, and bring it back — usually same day.
+                We'll collect your device, fix it, and bring it back — usually same day.
               </p>
             </div>
 

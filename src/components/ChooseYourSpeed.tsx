@@ -9,6 +9,7 @@ const tiers = [
     turnaround: '24-48 hour turnaround',
     description: 'Walk in to Żebbuġ or Fgura',
     price: 'Base repair price',
+    priceNote: '',
     cta: 'Book standard',
     message: "Hi, I need a repair. My device is [] and the issue is [].",
     featured: false,
@@ -19,6 +20,7 @@ const tiers = [
     turnaround: 'Guaranteed same-day completion',
     description: 'We prioritise your repair',
     price: '+€15 on any repair',
+    priceNote: '(Waived if we don\'t deliver same day)',
     cta: 'Book priority',
     message: "Hi, I'd like to book a Same-Day Priority repair (+€15). My device is [] and the issue is [].",
     featured: true,
@@ -27,10 +29,11 @@ const tiers = [
     icon: Truck,
     title: 'We Come To You',
     turnaround: 'We collect from anywhere in Malta',
-    description: 'Device fixed and returned',
-    price: 'From €5 (same-day return €10)',
+    description: 'Device fixed and returned to you',
+    price: '€15 one-way | €30 round trip',
+    priceNote: '',
     cta: 'Book pickup',
-    message: "Hi, I'd like to book pickup and delivery. My device is [] and the issue is []. My address is [].",
+    message: "Hi, I'd like to book pickup and delivery (€30 round trip). My device is [] and the issue is []. My address is [].",
     featured: false,
   },
 ];
@@ -89,9 +92,14 @@ export const ChooseYourSpeed = () => {
               </p>
 
               {/* Price */}
-              <p className={`text-lg font-bold mb-6 ${tier.featured ? 'text-primary' : 'text-foreground'}`}>
-                {tier.price}
-              </p>
+              <div className="mb-6">
+                <p className={`text-lg font-bold ${tier.featured ? 'text-primary' : 'text-foreground'}`}>
+                  {tier.price}
+                </p>
+                {tier.priceNote && (
+                  <p className="text-xs text-muted-foreground mt-1">{tier.priceNote}</p>
+                )}
+              </div>
 
               {/* CTA */}
               <Button
@@ -108,6 +116,11 @@ export const ChooseYourSpeed = () => {
             </div>
           ))}
         </div>
+
+        {/* Note below cards */}
+        <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+          Can't make it to our shop? We'll collect your device, fix it, and bring it back — often same day.
+        </p>
       </div>
     </section>
   );

@@ -43,8 +43,16 @@ const faqs = [
     answer: 'Apple, Samsung, Huawei, Xiaomi, OnePlus, Google Pixel, and more. Laptops and tablets too.',
   },
   {
-    question: 'Can you come to me?',
-    answer: 'Yes. Pickup and delivery anywhere in Malta. Standard €5, same-day return €10.',
+    question: 'How much is pickup and delivery?',
+    answer: '€15 one-way, or €30 for round trip (we collect and return). Available anywhere in Malta.',
+  },
+  {
+    question: "What if my same-day priority repair isn't done same day?",
+    answer: "If we can't complete your repair same day, the €15 priority fee is waived. We stand behind our promise.",
+  },
+  {
+    question: 'What is ProtectionPro?',
+    answer: "ProtectionPro is a military-grade screen protection film by Madico. It's tested to withstand extreme impact and professionally fitted by our technicians. €35 installed.",
   },
 ];
 
