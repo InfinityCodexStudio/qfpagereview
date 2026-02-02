@@ -50,9 +50,15 @@ export const getWhatsAppUrlForFix = (issue: string) => {
   return getWhatsAppUrl(message);
 };
 
-// WhatsApp URL for pickup
+// WhatsApp URL for pickup (round trip)
 export const getWhatsAppUrlForPickup = () => {
-  const message = "Hi, I'd like to book pickup and delivery. My device is [] and the issue is []. My address is [].";
+  const message = "Hi, I'd like to book pickup and delivery (€30 round trip). My device is [] and the issue is []. My address is [].";
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for pickup (one-way)
+export const getWhatsAppUrlForPickupOneWay = () => {
+  const message = "Hi, I'd like to book pickup only (€15). My device is [] and the issue is []. My address is [].";
   return getWhatsAppUrl(message);
 };
 
@@ -64,7 +70,13 @@ export const getWhatsAppUrlForPriority = () => {
 
 // WhatsApp URL for protection pack
 export const getWhatsAppUrlForProtectionPack = () => {
-  const message = "Hi, I'd like to add the Protection Pack (€50) to my repair.";
+  const message = "Hi, I'd like to add the Protection Pack (€45 - ProtectionPro + 6-month warranty) to my repair.";
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for ProtectionPro only
+export const getWhatsAppUrlForProtectionPro = () => {
+  const message = "Hi, I'd like to add ProtectionPro screen protection (€35) to my repair.";
   return getWhatsAppUrl(message);
 };
 
