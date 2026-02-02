@@ -52,7 +52,19 @@ export const getWhatsAppUrlForFix = (issue: string) => {
 
 // WhatsApp URL for pickup
 export const getWhatsAppUrlForPickup = () => {
-  const message = "Hi, I'd like to book a pickup for my device repair. My address is [] and my device is [].";
+  const message = "Hi, I'd like to book pickup and delivery. My device is [] and the issue is []. My address is [].";
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for priority booking
+export const getWhatsAppUrlForPriority = () => {
+  const message = "Hi, I'd like to book a Same-Day Priority repair (+€15). My device is [] and the issue is [].";
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for protection pack
+export const getWhatsAppUrlForProtectionPack = () => {
+  const message = "Hi, I'd like to add the Protection Pack (€50) to my repair.";
   return getWhatsAppUrl(message);
 };
 

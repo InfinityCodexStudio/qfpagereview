@@ -22,8 +22,15 @@ export const PickupDelivery = () => {
               <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
                 Can't make it to us? We'll come to you.
               </h3>
-              <p className="text-muted-foreground">
-                Pickup and delivery anywhere in Malta for €5. We collect your device, fix it, and bring it back — usually same day.
+              <p className="text-muted-foreground mb-2">
+                Pickup and delivery anywhere in Malta.
+              </p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• <span className="font-medium text-foreground">Standard:</span> €5</li>
+                <li>• <span className="font-medium text-foreground">Same-day return:</span> €10</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">
+                We collect your device, fix it, and bring it back — usually same day.
               </p>
             </div>
 
