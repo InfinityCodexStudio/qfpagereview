@@ -27,7 +27,7 @@ export const Locations = () => {
   };
 
   return (
-    <section id="locations" className="section-padding bg-secondary/50">
+    <section id="locations" className="section-padding bg-secondary">
       <div className="container">
         {/* Section header */}
         <div className="text-center mb-12">
@@ -67,7 +67,7 @@ export const Locations = () => {
               </div>
 
               {/* Hours */}
-              <div className="flex items-start gap-3 mb-6 p-4 bg-secondary/50 rounded-lg">
+              <div className="flex items-start gap-3 mb-6 p-4 bg-secondary rounded-lg">
                 <Clock className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-sm">
                   <p className="font-medium text-foreground">Opening hours</p>

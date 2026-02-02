@@ -1,29 +1,24 @@
-import { 
-  Smartphone, 
-  Battery, 
-  PlugZap, 
-  Volume2, 
-  Camera, 
-  SquareMousePointer, 
-  Droplets, 
-  Cpu,
-  HelpCircle
-} from 'lucide-react';
+import { HelpCircle, MessageCircle } from 'lucide-react';
+import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrl } from '@/lib/tracking';
 
 const fixes = [
-  { icon: Smartphone, label: 'Screen replacement' },
-  { icon: Battery, label: 'Battery replacement' },
-  { icon: PlugZap, label: 'Charging port' },
-  { icon: Volume2, label: 'Speaker / microphone' },
-  { icon: Camera, label: 'Camera issues' },
-  { icon: SquareMousePointer, label: 'Buttons' },
-  { icon: Droplets, label: 'Water damage' },
-  { icon: Cpu, label: 'Motherboard / diagnostics' },
+  { label: 'Screen replacement', price: 'from €45' },
+  { label: 'Battery replacement', price: 'from €35' },
+  { label: 'Charging port', price: 'from €30' },
+  { label: 'Speaker / microphone', price: 'from €35' },
+  { label: 'Camera issues', price: 'Get quote' },
+  { label: 'Buttons', price: 'Get quote' },
+  { label: 'Water damage', price: '€20 diagnostic' },
+  { label: 'Motherboard / diagnostics', price: 'Get quote' },
 ];
 
 export const CommonFixes = () => {
+  const handleFixClick = (issue: string) => {
+    trackEvent('fix_click', { issue, source: 'common_fixes' });
+  };
+
   return (
-    <section id="common-fixes" className="section-padding bg-secondary/50">
+    <section id="common-fixes" className="section-padding bg-secondary">
       <div className="container">
         {/* Section header */}
         <div className="text-center mb-12">
@@ -36,32 +31,43 @@ export const CommonFixes = () => {
         </div>
 
         {/* Fixes grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
           {fixes.map((fix, index) => (
-            <div
+            <a
               key={index}
-              className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover:border-primary/30 hover:shadow-sm transition-all"
+              href={getWhatsAppUrlForFix(fix.label)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleFixClick(fix.label)}
+              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <fix.icon className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-sm font-medium text-foreground">
+              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                 {fix.label}
               </span>
-            </div>
+              <span className="text-xs font-semibold text-primary">
+                {fix.price}
+              </span>
+            </a>
           ))}
         </div>
 
         {/* Not listed */}
         <div className="text-center mt-8">
           <a 
-            href="#book" 
+            href={getWhatsAppUrl("Hi, I have an issue that's not listed. My device is [] and the problem is [].")}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
           >
             <HelpCircle className="w-4 h-4" />
             Issue not listed? Ask us.
           </a>
         </div>
+
+        {/* Disclaimer */}
+        <p className="text-xs text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
+          Prices vary by device model. Final quote given on inspection.
+        </p>
       </div>
     </section>
   );

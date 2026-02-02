@@ -4,18 +4,21 @@ const steps = [
   {
     icon: MessageSquare,
     step: '1',
+    emoji: '💬',
     title: 'Tell us the issue',
     description: 'Call, WhatsApp, or fill in the form. Describe your device and the problem.',
   },
   {
     icon: MapPin,
     step: '2',
-    title: 'Choose your shop',
-    description: 'Pick Żebbuġ or Fgura. Walk in or book a convenient time.',
+    emoji: '📍',
+    title: 'Visit or we collect',
+    description: 'Walk into Żebbuġ or Fgura, or we pick up from anywhere in Malta (€5 fee).',
   },
   {
     icon: Wrench,
     step: '3',
+    emoji: '🔧',
     title: 'We diagnose & repair',
     description: 'We check your device, give you a clear quote, then fix it. Many repairs done same day.',
   },
@@ -44,9 +47,9 @@ export const HowItWorks = () => {
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-border" />
               )}
               
-              {/* Step number */}
+              {/* Step icon with number */}
               <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
-                <step.icon className="w-8 h-8 text-primary" />
+                <span className="text-3xl">{step.emoji}</span>
                 <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">
                   {step.step}
                 </span>
