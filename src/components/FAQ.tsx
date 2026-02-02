@@ -8,35 +8,43 @@ import {
 const faqs = [
   {
     question: 'What warranty do you offer?',
-    answer: '90 days on all repairs and replaced parts.',
+    answer: '90 days on all repairs and replaced parts. You can upgrade to 6 months for €20.',
   },
   {
     question: 'Will I lose my data during the repair?',
-    answer: "No. We don't touch your data. If a repair might affect it, we'll tell you first.",
+    answer: "No. We don't access or touch your data. If a repair might affect it, we'll tell you first.",
   },
   {
     question: 'Do you use quality parts?',
-    answer: 'Yes. We use high-quality replacement parts on all repairs.',
+    answer: 'Yes. We use high-quality replacement parts. No cheap knockoffs.',
   },
   {
     question: 'Do I need to book an appointment?',
-    answer: 'No, walk-ins are welcome. Booking ahead helps us prepare your parts.',
+    answer: 'No, walk-ins welcome. Booking ahead helps us prepare parts faster.',
   },
   {
     question: 'How long does a typical repair take?',
-    answer: 'Many repairs are done same day. Some within an hour.',
+    answer: 'Many repairs same day. Screen or battery often within an hour. Book Same-Day Priority (+€15) for guaranteed same-day.',
   },
   {
     question: 'Can you fix water damage?',
-    answer: 'We can try. We charge €20 for diagnostic, then quote the repair.',
+    answer: 'We can try. €30 diagnostic to assess damage, then quote the repair. Fee waived if you proceed.',
   },
   {
     question: 'How much will my repair cost?',
-    answer: "It depends on device and issue. Screen repairs start from €45, batteries from €35. We always confirm the price before starting.",
+    answer: 'Depends on device and issue. Screens from €70, batteries from €45. Flagship models cost more. We always confirm price before starting.',
+  },
+  {
+    question: "What's the diagnostic fee?",
+    answer: '€30 — waived if you proceed with repair. For repairs under €100, we often fix on the spot.',
   },
   {
     question: 'Which brands do you repair?',
-    answer: "Apple, Samsung, Huawei, Xiaomi, OnePlus, Google, and more. If it's broken, ask us.",
+    answer: 'Apple, Samsung, Huawei, Xiaomi, OnePlus, Google Pixel, and more. Laptops and tablets too.',
+  },
+  {
+    question: 'Can you come to me?',
+    answer: 'Yes. Pickup and delivery anywhere in Malta. Standard €5, same-day return €10.',
   },
 ];
 

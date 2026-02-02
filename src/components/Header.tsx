@@ -33,17 +33,20 @@ export const Header = () => {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
-          {/* Icon only on mobile */}
-          <img 
-            src={logoIcon} 
-            alt="QuickFix" 
-            className="h-10 w-10 md:hidden"
-          />
-          {/* Full logo on desktop */}
+          {/* Icon + text on mobile */}
+          <div className="flex items-center gap-2 md:hidden">
+            <img 
+              src={logoIcon} 
+              alt="QuickFix" 
+              className="h-10 w-10"
+            />
+            <span className="font-display font-bold text-foreground text-lg">QuickFix</span>
+          </div>
+          {/* Full logo on desktop - larger */}
           <img 
             src={logoFull} 
             alt="QuickFix Malta" 
-            className="h-12 hidden md:block"
+            className="h-14 hidden md:block"
           />
         </a>
 

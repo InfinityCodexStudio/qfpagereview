@@ -2,14 +2,15 @@ import { HelpCircle, MessageCircle } from 'lucide-react';
 import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrl } from '@/lib/tracking';
 
 const fixes = [
-  { label: 'Screen replacement', price: 'from €45' },
-  { label: 'Battery replacement', price: 'from €35' },
-  { label: 'Charging port', price: 'from €30' },
-  { label: 'Speaker / microphone', price: 'from €35' },
+  { label: 'Screen replacement', price: 'from €70' },
+  { label: 'Battery replacement', price: 'from €45' },
+  { label: 'Charging port', price: 'from €40' },
+  { label: 'Speaker / microphone', price: 'from €40' },
+  { label: 'Back glass', price: 'from €50' },
   { label: 'Camera issues', price: 'Get quote' },
   { label: 'Buttons', price: 'Get quote' },
-  { label: 'Water damage', price: '€20 diagnostic' },
-  { label: 'Motherboard / diagnostics', price: 'Get quote' },
+  { label: 'Water damage', price: '€30 diagnostic' },
+  { label: 'Motherboard / diagnostics', price: '€30 diagnostic' },
 ];
 
 export const CommonFixes = () => {
@@ -66,7 +67,7 @@ export const CommonFixes = () => {
 
         {/* Disclaimer */}
         <p className="text-xs text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
-          Prices vary by device model. Final quote given on inspection.
+          Prices vary by device model and generation. Final quote confirmed before repair. Diagnostic fee waived if you proceed with repair.
         </p>
       </div>
     </section>

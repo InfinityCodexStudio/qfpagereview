@@ -45,7 +45,7 @@ export const Hero = () => {
 
           {/* Subhead */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Same-day repairs for most issues. 90-day guarantee on all repairs and parts.
+            Same-day repairs for most issues. 90-day guarantee on all repairs and parts. Walk in or we come to you.
           </p>
 
           {/* CTA Buttons */}
@@ -90,6 +90,11 @@ export const Hero = () => {
             </div>
             <span>4.9 from 120+ Google reviews</span>
           </a>
+
+          {/* Local touch */}
+          <p className="text-sm text-muted-foreground mt-4 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+            Serving Żebbuġ, Fgura, and all of Malta since 2018
+          </p>
         </div>
       </div>
     </section>
