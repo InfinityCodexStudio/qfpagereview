@@ -15,6 +15,10 @@ export const StickyCTA = () => {
     trackEvent('directions_click', { source: 'sticky_cta' });
   };
 
+  const handleBookClick = () => {
+    trackEvent('whatsapp_click', { source: 'sticky_cta_book' });
+  };
+
   return (
     <div className="sticky-cta-bar md:hidden">
       <div className="container py-3">
@@ -63,8 +67,9 @@ export const StickyCTA = () => {
             size="sm"
             className="flex-col h-auto py-2 px-1 text-xs border-primary text-primary"
             asChild
+            onClick={handleBookClick}
           >
-            <a href="#book">
+            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
               <Calendar className="w-4 h-4 mb-1" />
               Book
             </a>

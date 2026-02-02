@@ -8,41 +8,41 @@ import {
 const faqs = [
   {
     question: 'What warranty do you offer?',
-    answer: 'All repairs and parts come with a 90-day warranty. If the same issue returns within 90 days, we\'ll fix it at no extra cost.',
+    answer: '90 days on all repairs and replaced parts.',
   },
   {
     question: 'Will I lose my data during the repair?',
-    answer: 'For most repairs (screen, battery, charging port), your data stays safe. For more complex issues, we\'ll always let you know in advance if there\'s any risk.',
+    answer: "No. We don't touch your data. If a repair might affect it, we'll tell you first.",
   },
   {
     question: 'Do you use quality parts?',
-    answer: 'Yes. We use quality replacement parts that meet or exceed original specifications. All parts are covered by our 90-day warranty.',
+    answer: 'Yes. We use high-quality replacement parts on all repairs.',
   },
   {
     question: 'Do I need to book an appointment?',
-    answer: 'No appointment needed for most repairs—just walk in. However, booking ahead helps us prepare and can speed things up, especially for busy times.',
+    answer: 'No, walk-ins are welcome. Booking ahead helps us prepare your parts.',
   },
   {
     question: 'How long does a typical repair take?',
-    answer: 'Many common repairs (screen replacement, battery swap) are done same day, often within 1–2 hours. More complex issues may take longer. We\'ll give you a time estimate upfront.',
+    answer: 'Many repairs are done same day. Some within an hour.',
   },
   {
     question: 'Can you fix water damage?',
-    answer: 'We can often recover water-damaged devices, but success depends on how quickly you bring it in and the extent of the damage. The sooner, the better—don\'t try to charge it, just bring it straight to us.',
+    answer: 'We can try. We charge €20 for diagnostic, then quote the repair.',
   },
   {
     question: 'How much will my repair cost?',
-    answer: 'Prices depend on your device model and the issue. We\'ll give you a clear quote before any work begins—no surprise charges.',
+    answer: "It depends on device and issue. Screen repairs start from €45, batteries from €35. We always confirm the price before starting.",
   },
   {
     question: 'Which brands do you repair?',
-    answer: 'We repair all major brands: Apple, Samsung, Huawei, Xiaomi, OnePlus, Sony, LG, and more. If you\'re unsure, just ask.',
+    answer: "Apple, Samsung, Huawei, Xiaomi, OnePlus, Google, and more. If it's broken, ask us.",
   },
 ];
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="section-padding bg-secondary/50">
+    <section id="faq" className="section-padding bg-secondary">
       <div className="container">
         {/* Section header */}
         <div className="text-center mb-12">

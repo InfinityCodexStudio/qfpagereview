@@ -3,10 +3,10 @@ import { Hero } from '@/components/Hero';
 import { Services } from '@/components/Services';
 import { CommonFixes } from '@/components/CommonFixes';
 import { HowItWorks } from '@/components/HowItWorks';
+import { PickupDelivery } from '@/components/PickupDelivery';
 import { Locations } from '@/components/Locations';
 import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
-import { BookingForm } from '@/components/BookingForm';
 import { Footer } from '@/components/Footer';
 import { StickyCTA } from '@/components/StickyCTA';
 import { SEO } from '@/components/SEO';
@@ -22,10 +22,10 @@ const Index = () => {
         <Services />
         <CommonFixes />
         <HowItWorks />
+        <PickupDelivery />
         <Locations />
         <Testimonials />
         <FAQ />
-        <BookingForm />
       </main>
 
       <Footer />

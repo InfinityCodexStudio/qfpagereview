@@ -1,28 +1,29 @@
-import { Star, Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
+import { GOOGLE_REVIEWS_URL } from '@/lib/tracking';
 
 const testimonials = [
   {
-    name: 'Maria C.',
+    name: 'Raymond A.',
     location: 'Żebbuġ',
-    text: 'Dropped my phone in water. They saved it and all my photos. So relieved!',
+    text: 'Two mobiles with cracked screens. Very good job and fast return once collected. Will definitely use again.',
     rating: 5,
   },
   {
-    name: 'Joseph M.',
+    name: 'Jason I.',
     location: 'Fgura',
-    text: 'Screen replaced in under an hour. Good price, friendly service.',
+    text: 'Fast and reliable service. Changed my Samsung screen in less than 24 hours. Highly recommended.',
     rating: 5,
   },
   {
-    name: 'Sarah B.',
+    name: 'Marco M.',
     location: 'Żebbuġ',
-    text: 'My laptop wouldn\'t turn on. They diagnosed it quickly and were honest about the repair cost.',
+    text: "Great and efficient service. Pickup and delivery is the best. Device was fixed same day. Price agreed before as well.",
     rating: 5,
   },
   {
-    name: 'David R.',
+    name: 'Jack M.',
     location: 'Fgura',
-    text: 'Battery was dying fast. Now my phone lasts all day again. 90-day warranty gives peace of mind.',
+    text: 'Omar was very knowledgeable and provided excellent service. The whole process was very organised. Highly recommended!',
     rating: 5,
   },
 ];
@@ -45,14 +46,12 @@ export const Testimonials = () => {
         </div>
 
         {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
               className="relative p-6 bg-card rounded-xl border border-border"
             >
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
-              
               {/* Stars */}
               <div className="flex gap-1 mb-3">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -74,11 +73,27 @@ export const Testimonials = () => {
           ))}
         </div>
 
+        {/* See all reviews link */}
+        <div className="text-center mb-8">
+          <a 
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          >
+            See all reviews on Google →
+          </a>
+        </div>
+
         {/* Trust strip */}
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 py-6 px-4 bg-primary/5 rounded-xl">
           {trustStrip.map((item, index) => (
             <div key={index} className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-success" />
+              <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
+                <svg className="w-3 h-3 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
               <span className="text-sm font-medium text-foreground">{item}</span>
             </div>
           ))}

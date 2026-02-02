@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Phone, MessageCircle, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getPhoneUrl, getWhatsAppUrl } from '@/lib/tracking';
+import logoFull from '@/assets/QF_Logo.png';
+import logoIcon from '@/assets/QF_Logo_Sticker.png';
 
 const navLinks = [
   { href: '#services', label: 'Services' },
   { href: '#common-fixes', label: 'Common Fixes' },
   { href: '#locations', label: 'Locations' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#book', label: 'Book' },
 ];
 
 export const Header = () => {
@@ -31,15 +32,23 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">QF</span>
-          </div>
-          <span className="font-display font-bold text-lg text-foreground">QuickFix</span>
+        <a href="#" className="flex items-center">
+          {/* Icon only on mobile */}
+          <img 
+            src={logoIcon} 
+            alt="QuickFix" 
+            className="h-10 w-10 md:hidden"
+          />
+          {/* Full logo on desktop */}
+          <img 
+            src={logoFull} 
+            alt="QuickFix Malta" 
+            className="h-12 hidden md:block"
+          />
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        {/* Desktop Nav - Centered */}
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}

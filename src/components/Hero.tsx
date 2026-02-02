@@ -1,16 +1,16 @@
-import { Clock, Shield, Lock, MapPin } from 'lucide-react';
+import { Clock, Shield, Lock, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackEvent } from '@/lib/tracking';
+import { trackEvent, getWhatsAppUrl, GOOGLE_REVIEWS_URL } from '@/lib/tracking';
 
 const trustBullets = [
-  { icon: Clock, text: 'Same-day repairs (many jobs)' },
+  { icon: Clock, text: 'Same-day repairs (most jobs)' },
   { icon: Shield, text: '90-day guarantee' },
   { icon: Lock, text: 'Your data stays safe' },
 ];
 
 export const Hero = () => {
   const handleBookClick = () => {
-    trackEvent('nav_click', { source: 'hero_book' });
+    trackEvent('whatsapp_click', { source: 'hero_book' });
   };
 
   const handleDirectionsClick = () => {
@@ -29,10 +29,10 @@ export const Hero = () => {
       
       <div className="container relative section-padding">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Trust badge */}
+          {/* Location badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border text-sm font-medium text-muted-foreground mb-6 animate-fade-in">
             <MapPin className="w-4 h-4 text-primary" />
-            Two locations: Żebbuġ + Fgura
+            📍 Two locations: Żebbuġ + Fgura
           </div>
 
           {/* Headline */}
@@ -45,14 +45,15 @@ export const Hero = () => {
 
           {/* Subhead */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            Same-day repairs for many issues. 90-day guarantee on all repairs and parts.
-            Walk in or book ahead at our Żebbuġ or Fgura shop.
+            Same-day repairs for most issues. 90-day guarantee on all repairs and parts.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button variant="hero" size="xl" asChild onClick={handleBookClick}>
-              <a href="#book">Book a repair</a>
+              <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+                Book a repair
+              </a>
             </Button>
             <Button variant="heroSecondary" size="lg" asChild onClick={handleDirectionsClick}>
               <a href="#locations">
@@ -63,16 +64,32 @@ export const Hero = () => {
           </div>
 
           {/* Trust bullets */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 mb-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {trustBullets.map((bullet, index) => (
               <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <div className="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center">
-                  <bullet.icon className="w-4 h-4 text-success" />
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <bullet.icon className="w-4 h-4 text-primary" />
                 </div>
                 {bullet.text}
               </div>
             ))}
           </div>
+
+          {/* Google Reviews */}
+          <a 
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors animate-slide-up"
+            style={{ animationDelay: '0.4s' }}
+          >
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+              ))}
+            </div>
+            <span>4.9 from 120+ Google reviews</span>
+          </a>
         </div>
       </div>
     </section>
