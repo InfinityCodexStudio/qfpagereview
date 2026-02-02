@@ -37,52 +37,126 @@ export const EMAIL = 'info@quickfixmalta.com';
 
 export const getPhoneUrl = () => `tel:${PHONE_NUMBER}`;
 
-// WhatsApp URL with pre-filled message support
+// WhatsApp URL with structured pre-fill message
 export const getWhatsAppUrl = (message?: string) => {
-  const defaultMessage = "Hi, I need a repair. My device is [] and the issue is [].";
+  const defaultMessage = `Hi, I need a repair.
+
+Device: 
+Issue: 
+Location (Żebbuġ / Fgura / Pickup): 
+Preferred time: 
+
+Thanks!`;
   const baseUrl = `https://wa.me/35699209869`;
   return `${baseUrl}?text=${encodeURIComponent(message || defaultMessage)}`;
 };
 
 // WhatsApp URL for specific fix/issue
 export const getWhatsAppUrlForFix = (issue: string) => {
-  const message = `Hi, I need help with ${issue}. My device is []. I'm near Żebbuġ / Fgura.`;
+  const message = `Hi, I need a ${issue.toLowerCase()}.
+
+Device: 
+Location (Żebbuġ / Fgura / Pickup): 
+Preferred time: 
+
+Thanks!`;
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for specific service category
+export const getWhatsAppUrlForService = (service: string) => {
+  const message = `Hi, I need help with my ${service.toLowerCase()}.
+
+Device model: 
+Issue: 
+Location (Żebbuġ / Fgura / Pickup): 
+
+Thanks!`;
+  return getWhatsAppUrl(message);
+};
+
+// WhatsApp URL for standard booking
+export const getWhatsAppUrlForStandard = () => {
+  const message = `Hi, I'd like to book a standard repair.
+
+Device: 
+Issue: 
+Location (Żebbuġ / Fgura): 
+Preferred time: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for pickup (round trip)
 export const getWhatsAppUrlForPickup = () => {
-  const message = "Hi, I'd like to book pickup and delivery (€30 round trip). My device is [] and the issue is []. My address is [].";
+  const message = `Hi, I'd like to book pickup and delivery.
+
+Device: 
+Issue: 
+My address: 
+Preferred pickup time: 
+
+Round trip (€30) or one-way (€15)? 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for pickup (one-way)
 export const getWhatsAppUrlForPickupOneWay = () => {
-  const message = "Hi, I'd like to book pickup only (€15). My device is [] and the issue is []. My address is [].";
+  const message = `Hi, I'd like to book pickup only (€15).
+
+Device: 
+Issue: 
+My address: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for priority booking
 export const getWhatsAppUrlForPriority = () => {
-  const message = "Hi, I'd like to book a Same-Day Priority repair (+€15). My device is [] and the issue is [].";
+  const message = `Hi, I'd like to book a Same-Day Priority repair (+€15).
+
+Device: 
+Issue: 
+Location (Żebbuġ / Fgura): 
+Preferred time: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for protection pack
 export const getWhatsAppUrlForProtectionPack = () => {
-  const message = "Hi, I'd like to add the Protection Pack (€45 - ProtectionPro + 6-month warranty) to my repair.";
+  const message = `Hi, I'd like to add the Protection Pack (€45) to my repair.
+
+Device: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for ProtectionPro only
 export const getWhatsAppUrlForProtectionPro = () => {
-  const message = "Hi, I'd like to add ProtectionPro screen protection (€35) to my repair.";
+  const message = `Hi, I'd like to add ProtectionPro screen protection (€35) to my repair.
+
+Device: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 
 // WhatsApp URL for data recovery
 export const getWhatsAppUrlForDataRecovery = () => {
-  const message = "Hi, I need help with data recovery. My device is [] and what happened is [].";
+  const message = `Hi, I need help with data recovery.
+
+Device: 
+What happened: 
+What data do you need recovered: 
+
+Thanks!`;
   return getWhatsAppUrl(message);
 };
 

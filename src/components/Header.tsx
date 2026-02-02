@@ -32,24 +32,16 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
-          {/* Icon + text on mobile - 48px minimum */}
-          <div className="flex items-center gap-2 md:hidden">
-            <img 
-              src={logoIcon} 
-              alt="QuickFix" 
-              className="h-12 w-12"
-            />
-            <span className="font-display font-bold text-foreground text-xl">QuickFix</span>
-          </div>
-          {/* Full logo + text on desktop - 60px minimum */}
-          <div className="hidden md:flex items-center gap-3">
-            <img 
-              src={logoFull} 
-              alt="QuickFix Malta" 
-              className="h-[60px]"
-            />
-          </div>
+        <a href="#" className="flex items-center gap-3">
+          {/* Icon + QUICKFIX text - consistent on all sizes */}
+          <img 
+            src={logoIcon} 
+            alt="QuickFix" 
+            className="h-10 w-10 md:h-12 md:w-12"
+          />
+          <span className="font-bold text-foreground text-lg md:text-xl tracking-wide">
+            QUICKFIX
+          </span>
         </a>
 
         {/* Desktop Nav - Centered */}

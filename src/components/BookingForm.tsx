@@ -32,13 +32,21 @@ const issues = [
   { value: 'camera', label: 'Camera issues' },
   { value: 'buttons', label: 'Buttons' },
   { value: 'water', label: 'Water damage' },
-  { value: 'motherboard', label: 'Motherboard / diagnostics' },
+  { value: 'data', label: 'Data recovery' },
+  { value: 'backglass', label: 'Back glass' },
   { value: 'other', label: 'Other issue' },
 ];
 
 const locations = [
-  { value: 'zebbug', label: 'Żebbuġ' },
-  { value: 'fgura', label: 'Fgura' },
+  { value: 'zebbug', label: 'Żebbuġ shop' },
+  { value: 'fgura', label: 'Fgura shop' },
+  { value: 'pickup', label: 'Pickup and delivery (+€15/€30)' },
+];
+
+const contactMethods = [
+  { value: 'whatsapp', label: 'WhatsApp (fastest)' },
+  { value: 'phone', label: 'Phone call' },
+  { value: 'email', label: 'Email' },
 ];
 
 export const BookingForm = () => {
@@ -54,7 +62,7 @@ export const BookingForm = () => {
     issue: '',
     notes: '',
     location: '',
-    preferredTime: '',
+    contactMethod: 'whatsapp',
     consent: false,
   });
 
@@ -85,29 +93,41 @@ export const BookingForm = () => {
   };
 
   const handleWhatsAppFallback = () => {
-    const message = `Hi, I'd like to book a repair.\n\nName: ${formData.name}\nDevice: ${formData.deviceType} - ${formData.brandModel}\nIssue: ${formData.issue}\nPreferred location: ${formData.location}`;
+    const message = `Hi, I'd like to book a repair.
+
+Name: ${formData.name}
+Device: ${formData.deviceType} - ${formData.brandModel}
+Issue: ${formData.issue}
+Preferred location: ${formData.location}
+
+Thanks!`;
     trackEvent('whatsapp_click', { source: 'form_fallback' });
     window.open(getWhatsAppUrl(message), '_blank');
   };
 
   if (isSubmitted) {
     return (
-      <section id="book" className="section-padding bg-background">
+      <section id="book" className="section-padding bg-secondary">
         <div className="container">
           <div className="max-w-xl mx-auto text-center p-8 bg-card rounded-xl border border-border">
-            <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-success" />
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-8 h-8 text-primary" />
             </div>
             <h2 className="font-display text-2xl font-bold text-foreground mb-4">
               Request received!
             </h2>
+            <p className="text-muted-foreground mb-2">
+              Thanks {formData.name}. We'll contact you within 1 hour during business hours.
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              (Mon-Fri 10am-7pm, Sat 10am-2pm)
+            </p>
             <p className="text-muted-foreground mb-6">
-              We'll get back to you shortly to confirm your repair booking.
-              For faster response, you can also reach us on WhatsApp.
+              Need faster help? WhatsApp us now.
             </p>
             <Button variant="whatsapp" size="lg" onClick={handleWhatsAppFallback}>
               <MessageCircle className="w-5 h-5" />
-              Message us on WhatsApp
+              WhatsApp
             </Button>
           </div>
         </div>
@@ -116,7 +136,7 @@ export const BookingForm = () => {
   }
 
   return (
-    <section id="book" className="section-padding bg-background">
+    <section id="book" className="section-padding bg-secondary">
       <div className="container">
         {/* Section header */}
         <div className="text-center mb-12">
@@ -124,7 +144,7 @@ export const BookingForm = () => {
             Book your repair
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Fill in the form and we'll get back to you to confirm your booking.
+            Prefer a form? Fill in your details and we'll get back to you within 1 hour during business hours.
           </p>
         </div>
 
@@ -134,7 +154,7 @@ export const BookingForm = () => {
             {/* Name & Phone row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name *</Label>
+                <Label htmlFor="name">Your name *</Label>
                 <Input
                   id="name"
                   required
@@ -144,12 +164,12 @@ export const BookingForm = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Phone *</Label>
+                <Label htmlFor="phone">Phone / WhatsApp *</Label>
                 <Input
                   id="phone"
                   type="tel"
                   required
-                  placeholder="+356 9999 9999"
+                  placeholder="+356..."
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
@@ -162,7 +182,7 @@ export const BookingForm = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder="your@email.com (optional)"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -190,11 +210,10 @@ export const BookingForm = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="brandModel">Brand + Model *</Label>
+                <Label htmlFor="brandModel">Brand and model</Label>
                 <Input
                   id="brandModel"
-                  required
-                  placeholder="e.g. iPhone 13, Samsung S23"
+                  placeholder="e.g. iPhone 14 Pro, Samsung S24"
                   value={formData.brandModel}
                   onChange={(e) => setFormData({ ...formData, brandModel: e.target.value })}
                 />
@@ -203,7 +222,7 @@ export const BookingForm = () => {
 
             {/* Issue */}
             <div className="space-y-2">
-              <Label htmlFor="issue">Issue *</Label>
+              <Label htmlFor="issue">What's the issue? *</Label>
               <Select
                 value={formData.issue}
                 onValueChange={(value) => setFormData({ ...formData, issue: value })}
@@ -224,46 +243,56 @@ export const BookingForm = () => {
 
             {/* Notes */}
             <div className="space-y-2">
-              <Label htmlFor="notes">Additional details (optional)</Label>
+              <Label htmlFor="notes">Tell us more (optional)</Label>
               <Textarea
                 id="notes"
-                placeholder="Describe the issue in more detail..."
+                placeholder="Any additional details about the problem..."
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 rows={3}
               />
             </div>
 
-            {/* Location & Preferred time row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="location">Preferred location *</Label>
-                <Select
-                  value={formData.location}
-                  onValueChange={(value) => setFormData({ ...formData, location: value })}
-                  required
-                >
-                  <SelectTrigger id="location">
-                    <SelectValue placeholder="Select shop" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {locations.map((loc) => (
-                      <SelectItem key={loc.value} value={loc.value}>
-                        {loc.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="preferredTime">Preferred time (optional)</Label>
-                <Input
-                  id="preferredTime"
-                  placeholder="e.g. Tomorrow morning"
-                  value={formData.preferredTime}
-                  onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
-                />
-              </div>
+            {/* Location */}
+            <div className="space-y-2">
+              <Label htmlFor="location">Preferred location *</Label>
+              <Select
+                value={formData.location}
+                onValueChange={(value) => setFormData({ ...formData, location: value })}
+                required
+              >
+                <SelectTrigger id="location">
+                  <SelectValue placeholder="Select location" />
+                </SelectTrigger>
+                <SelectContent>
+                  {locations.map((loc) => (
+                    <SelectItem key={loc.value} value={loc.value}>
+                      {loc.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Contact method */}
+            <div className="space-y-2">
+              <Label htmlFor="contactMethod">How should we contact you? *</Label>
+              <Select
+                value={formData.contactMethod}
+                onValueChange={(value) => setFormData({ ...formData, contactMethod: value })}
+                required
+              >
+                <SelectTrigger id="contactMethod">
+                  <SelectValue placeholder="Select contact method" />
+                </SelectTrigger>
+                <SelectContent>
+                  {contactMethods.map((method) => (
+                    <SelectItem key={method.value} value={method.value}>
+                      {method.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Consent */}
@@ -291,24 +320,33 @@ export const BookingForm = () => {
               ) : (
                 <>
                   <Send className="w-5 h-5" />
-                  Submit repair request
+                  Submit request
                 </>
               )}
             </Button>
 
             {/* WhatsApp fallback */}
-            <p className="text-center text-sm text-muted-foreground">
-              Prefer to chat?{' '}
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-whatsapp font-medium hover:underline"
-                onClick={() => trackEvent('whatsapp_click', { source: 'form_link' })}
+            <div className="text-center pt-4 border-t border-border">
+              <p className="text-sm text-muted-foreground mb-3">
+                Or message us directly on WhatsApp for the fastest response.
+              </p>
+              <Button
+                type="button"
+                variant="ctaOutline"
+                className="border-whatsapp text-whatsapp hover:bg-whatsapp hover:text-whatsapp-foreground"
+                asChild
               >
-                Message us on WhatsApp
-              </a>
-            </p>
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('whatsapp_click', { source: 'form_link' })}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp us now
+                </a>
+              </Button>
+            </div>
           </div>
         </form>
       </div>
