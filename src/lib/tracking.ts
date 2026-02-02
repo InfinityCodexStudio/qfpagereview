@@ -80,6 +80,12 @@ export const getWhatsAppUrlForProtectionPro = () => {
   return getWhatsAppUrl(message);
 };
 
+// WhatsApp URL for data recovery
+export const getWhatsAppUrlForDataRecovery = () => {
+  const message = "Hi, I need help with data recovery. My device is [] and what happened is [].";
+  return getWhatsAppUrl(message);
+};
+
 export const getEmailUrl = () => `mailto:${EMAIL}`;
 
 // Location data with updated direction URLs
