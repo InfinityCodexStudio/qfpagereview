@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     question: "What if my same-day priority repair isn't done same day?",
-    answer: "If we can't complete your repair same day, the €15 priority fee is waived. We stand behind our promise.",
+    answer: "If we can't complete your repair same day, the €15 priority fee is waived.",
   },
   {
     question: 'What is ProtectionPro?',
@@ -58,11 +58,10 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="section-padding bg-secondary">
+    <section id="faq" className="py-12 md:py-18 bg-secondary">
       <div className="container">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             Frequently asked questions
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -70,9 +69,8 @@ export const FAQ = () => {
           </p>
         </div>
 
-        {/* FAQ Accordion */}
         <div className="max-w-2xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-2">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}

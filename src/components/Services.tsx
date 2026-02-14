@@ -1,86 +1,91 @@
-import { Smartphone, Tablet, Laptop, Monitor, Gamepad2, HardDrive, ArrowRight } from 'lucide-react';
-import { trackEvent, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService } from '@/lib/tracking';
+import { Smartphone, Monitor, Gamepad2, HardDrive, ArrowRight, Tablet, Laptop } from 'lucide-react';
+import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService } from '@/lib/tracking';
 
-const services = [
-  {
-    icon: Smartphone,
-    title: 'Smartphones',
-    description: 'iPhone, Samsung, Huawei, Xiaomi, and more. Screen, battery, port repairs.',
-    serviceType: 'smartphone',
-  },
-  {
-    icon: Tablet,
-    title: 'Tablets',
-    description: 'iPad and Android tablets. Screen replacements and battery fixes.',
-    serviceType: 'tablet',
-  },
-  {
-    icon: Laptop,
-    title: 'Laptops',
-    description: 'All brands. Screen, keyboard, battery, and hardware repairs.',
-    serviceType: 'laptop',
-  },
-  {
-    icon: Monitor,
-    title: 'Computers',
-    description: 'Desktop repairs, upgrades, and diagnostics.',
-    serviceType: 'computer',
-  },
-  {
-    icon: Gamepad2,
-    title: 'Game Consoles',
-    description: 'PlayStation, Xbox, Nintendo. HDMI, disc drive, controller fixes.',
-    serviceType: 'game console',
-  },
-  {
-    icon: HardDrive,
-    title: 'Data Recovery',
-    description: 'Lost photos, contacts, or files? We recover data from damaged devices.',
-    isDataRecovery: true,
-  },
+const popularRepairs = [
+  { label: 'Screen replacement', price: 'from €70', issue: 'screen replacement' },
+  { label: 'Battery replacement', price: 'from €45', issue: 'battery replacement' },
+  { label: 'Charging port', price: 'from €40', issue: 'charging port repair' },
+  { label: 'Back glass', price: 'from €50', issue: 'back glass replacement' },
+  { label: 'Camera / buttons', price: 'Get quote', issue: 'camera or button repair' },
+  { label: 'Water damage (diagnostic)', price: '€30', issue: 'water damage diagnostic' },
+];
+
+const deviceCategories = [
+  { icon: Smartphone, title: 'Smartphones', serviceType: 'smartphone' },
+  { icon: Tablet, title: 'Tablets', serviceType: 'tablet' },
+  { icon: Laptop, title: 'Laptops', serviceType: 'laptop' },
+  { icon: Monitor, title: 'Computers', serviceType: 'computer' },
+  { icon: Gamepad2, title: 'Game Consoles', serviceType: 'game console' },
+  { icon: HardDrive, title: 'Data Recovery', isDataRecovery: true },
 ];
 
 export const Services = () => {
-  const handleServiceClick = (service: string) => {
+  const handleRepairClick = (issue: string) => {
+    trackEvent('fix_click', { issue, source: 'popular_repairs' });
+  };
+
+  const handleDeviceClick = (service: string) => {
     trackEvent('service_click', { source: service });
   };
 
   return (
-    <section id="services" className="section-padding bg-background">
+    <section id="services" className="py-12 md:py-18 bg-background">
       <div className="container">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What we repair
+        {/* Popular repairs - lead with problems */}
+        <div className="text-center mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Popular repairs
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Tap a repair to message us on WhatsApp for a quick quote.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto mb-14">
+          {popularRepairs.map((repair, index) => (
+            <a
+              key={index}
+              href={getWhatsAppUrlForFix(repair.issue)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleRepairClick(repair.issue)}
+              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
+            >
+              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                {repair.label}
+              </span>
+              <span className="text-xs font-semibold text-primary">
+                {repair.price}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Devices we repair - secondary */}
+        <div className="text-center mb-6">
+          <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+            Devices we repair
+          </h3>
+          <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
             From smartphones to game consoles. Professional repairs with quality parts.
           </p>
         </div>
 
-        {/* Service grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+          {deviceCategories.map((device, index) => (
             <a
               key={index}
-              href={service.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForService(service.serviceType || service.title)}
+              href={device.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForService(device.serviceType || device.title)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleServiceClick(service.title)}
-              className="group p-6 bg-card rounded-xl border border-border card-hover"
+              onClick={() => handleDeviceClick(device.title)}
+              className="group flex flex-col items-center gap-2 p-4 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-6 h-6 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <device.icon className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                {service.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {service.description}
-              </p>
-              <span className="inline-flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                Learn more
-                <ArrowRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+                {device.title}
               </span>
             </a>
           ))}

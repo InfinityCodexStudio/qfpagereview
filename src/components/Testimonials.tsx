@@ -36,35 +36,32 @@ const trustStrip = [
 
 export const Testimonials = () => {
   return (
-    <section className="section-padding bg-background">
+    <section className="py-12 md:py-18 bg-background">
       <div className="container">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             What our customers say
           </h2>
+          {/* Rating summary */}
+          <div className="inline-flex items-center gap-2 text-lg font-medium text-foreground mt-1">
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+              ))}
+            </div>
+            <span>4.9/5 on Google (120+ reviews)</span>
+          </div>
         </div>
 
-        {/* Testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto mb-6">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="relative p-6 bg-card rounded-xl border border-border"
-            >
-              {/* Stars */}
+            <div key={index} className="relative p-6 bg-card rounded-xl border border-border">
               <div className="flex gap-1 mb-3">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-accent text-accent" />
                 ))}
               </div>
-
-              {/* Text */}
-              <p className="text-foreground mb-4">
-                "{testimonial.text}"
-              </p>
-
-              {/* Author */}
+              <p className="text-foreground mb-4">"{testimonial.text}"</p>
               <div className="text-sm">
                 <span className="font-medium text-foreground">{testimonial.name}</span>
                 <span className="text-muted-foreground"> · {testimonial.location}</span>
@@ -73,20 +70,18 @@ export const Testimonials = () => {
           ))}
         </div>
 
-        {/* See all reviews link */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <a 
             href={GOOGLE_REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
           >
             See all reviews on Google →
           </a>
         </div>
 
-        {/* Trust strip */}
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 py-6 px-4 bg-primary/5 rounded-xl">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 py-5 px-4 bg-primary/5 rounded-xl">
           {trustStrip.map((item, index) => (
             <div key={index} className="flex items-center gap-2">
               <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">

@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Phone, MessageCircle, Menu, X } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Phone, MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackEvent, getPhoneUrl, getWhatsAppUrl } from '@/lib/tracking';
-import logoFull from '@/assets/QF_Logo.png';
-import logoIcon from '@/assets/QF_Logo_Sticker.png';
+import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
+import logoFull from '@/assets/QuickFix_logo_cropped_transparent.png';
+import logoIcon from '@/assets/QuickFix_icon_square_transparent.png';
 
 const navLinks = [
   { href: '#services', label: 'Services' },
@@ -14,14 +14,22 @@ const navLinks = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [callDropdownOpen, setCallDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setCallDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleNavClick = (label: string) => {
     trackEvent('nav_click', { source: label });
     setMobileMenuOpen(false);
-  };
-
-  const handleCallClick = () => {
-    trackEvent('call_click', { source: 'header' });
   };
 
   const handleWhatsAppClick = () => {
@@ -30,17 +38,22 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center">
           <img 
             src={logoFull} 
-            alt="QuickFix" 
-            className="h-10 md:h-12"
+            alt="QuickFix Malta" 
+            className="h-8 hidden sm:block object-contain"
+          />
+          <img 
+            src={logoIcon} 
+            alt="QuickFix Malta" 
+            className="h-7 sm:hidden object-contain"
           />
         </a>
 
-        {/* Desktop Nav - Centered */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -56,17 +69,38 @@ export const Header = () => {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-3">
-          <Button
-            variant="headerCta"
-            size="sm"
-            asChild
-            onClick={handleCallClick}
-          >
-            <a href={getPhoneUrl()}>
+          {/* Call dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <Button
+              variant="headerCta"
+              size="sm"
+              onClick={() => setCallDropdownOpen(!callDropdownOpen)}
+            >
               <Phone className="w-4 h-4" />
               Call
-            </a>
-          </Button>
+              <ChevronDown className="w-3 h-3" />
+            </Button>
+            {callDropdownOpen && (
+              <div className="absolute top-full right-0 mt-1 bg-card border border-border rounded-lg shadow-lg overflow-hidden z-50 min-w-[180px]">
+                <a
+                  href={LOCATIONS.zebbug.phoneUrl}
+                  onClick={() => { trackEvent('call_click', { location: 'zebbug', source: 'header' }); setCallDropdownOpen(false); }}
+                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-accent" />
+                  Call Żebbuġ
+                </a>
+                <a
+                  href={LOCATIONS.fgura.phoneUrl}
+                  onClick={() => { trackEvent('call_click', { location: 'fgura', source: 'header' }); setCallDropdownOpen(false); }}
+                  className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors border-t border-border"
+                >
+                  <Phone className="w-4 h-4 text-accent" />
+                  Call Fgura
+                </a>
+              </div>
+            )}
+          </div>
           <Button
             variant="headerWhatsapp"
             size="sm"
@@ -104,32 +138,6 @@ export const Header = () => {
                 {link.label}
               </a>
             ))}
-            <div className="flex gap-2 pt-4 border-t border-border mt-2">
-              <Button
-                variant="headerCta"
-                size="sm"
-                className="flex-1"
-                asChild
-                onClick={handleCallClick}
-              >
-                <a href={getPhoneUrl()}>
-                  <Phone className="w-4 h-4" />
-                  Call
-                </a>
-              </Button>
-              <Button
-                variant="headerWhatsapp"
-                size="sm"
-                className="flex-1"
-                asChild
-                onClick={handleWhatsAppClick}
-              >
-                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp
-                </a>
-              </Button>
-            </div>
           </nav>
         </div>
       )}
