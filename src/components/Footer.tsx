@@ -25,7 +25,7 @@ export const Footer = () => {
                 alt="QuickFix" 
                 className="h-12 w-12 brightness-0 invert"
               />
-              <span className="font-bold text-background text-xl tracking-wide">
+              <span className="text-[28px] uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.15em', color: '#FFFFFF' }}>
                 QUICKFIX
               </span>
             </div>
