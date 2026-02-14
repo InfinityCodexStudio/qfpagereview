@@ -36,20 +36,25 @@ export const Header = () => {
     trackEvent('whatsapp_click', { source: 'header' });
   };
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-14 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="#" onClick={scrollToTop} className="flex items-center">
           <img 
             src={logoFull} 
             alt="QuickFix Malta" 
-            className="h-8 hidden sm:block object-contain"
+            className="h-[30px] hidden sm:block w-auto object-contain"
           />
           <img 
             src={logoIcon} 
             alt="QuickFix Malta" 
-            className="h-7 sm:hidden object-contain"
+            className="h-[26px] sm:hidden w-auto object-contain"
           />
         </a>
 
@@ -83,7 +88,7 @@ export const Header = () => {
             {callDropdownOpen && (
               <div className="absolute top-full right-0 mt-1 bg-card border border-border rounded-lg shadow-lg overflow-hidden z-50 min-w-[180px]">
                 <a
-                  href={LOCATIONS.zebbug.phoneUrl}
+                  href="tel:+35627802501"
                   onClick={() => { trackEvent('call_click', { location: 'zebbug', source: 'header' }); setCallDropdownOpen(false); }}
                   className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors"
                 >
@@ -91,7 +96,7 @@ export const Header = () => {
                   Call Żebbuġ
                 </a>
                 <a
-                  href={LOCATIONS.fgura.phoneUrl}
+                  href="tel:+35621317810"
                   onClick={() => { trackEvent('call_click', { location: 'fgura', source: 'header' }); setCallDropdownOpen(false); }}
                   className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground hover:bg-secondary transition-colors border-t border-border"
                 >
@@ -107,7 +112,7 @@ export const Header = () => {
             asChild
             onClick={handleWhatsAppClick}
           >
-            <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/35699209313" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-4 h-4" />
               WhatsApp
             </a>
