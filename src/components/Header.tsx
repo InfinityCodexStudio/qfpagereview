@@ -32,16 +32,12 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
-          {/* Icon + QUICKFIX text - consistent on all sizes */}
+        <a href="#" className="flex items-center">
           <img 
-            src={logoIcon} 
+            src={logoFull} 
             alt="QuickFix" 
-            className="h-10 w-10 md:h-12 md:w-12"
+            className="h-10 md:h-12"
           />
-          <span className="text-[24px] md:text-[28px] uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.15em', color: '#4B5563' }}>
-            QUICKFIX
-          </span>
         </a>
 
         {/* Desktop Nav - Centered */}

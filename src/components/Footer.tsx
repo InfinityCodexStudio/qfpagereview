@@ -19,15 +19,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand + Contact */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center mb-4">
               <img 
                 src={logoIcon} 
                 alt="QuickFix" 
-                className="h-12 w-12 brightness-0 invert"
+                className="h-12 brightness-0 invert"
               />
-              <span className="text-[28px] uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.15em', color: '#FFFFFF' }}>
-                QUICKFIX
-              </span>
             </div>
             <p className="text-background/70 text-sm mb-4">
               Trusted device repairs in Malta. Fast turnaround, quality parts, 90-day guarantee.
