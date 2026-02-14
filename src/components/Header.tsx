@@ -39,7 +39,7 @@ export const Header = () => {
             alt="QuickFix" 
             className="h-10 w-10 md:h-12 md:w-12"
           />
-          <span className="font-bold text-foreground text-lg md:text-xl tracking-wide">
+          <span className="text-[24px] md:text-[28px] uppercase" style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.15em', color: '#4B5563' }}>
             QUICKFIX
           </span>
         </a>
