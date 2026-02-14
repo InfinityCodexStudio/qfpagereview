@@ -1,5 +1,6 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { InstantQuote } from '@/components/InstantQuote';
 import { Services } from '@/components/Services';
 import { CommonFixes } from '@/components/CommonFixes';
 import { ChooseYourSpeed } from '@/components/ChooseYourSpeed';
@@ -23,6 +24,7 @@ const Index = () => {
       
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
+        <InstantQuote />
         <Services />
         <CommonFixes />
         <ChooseYourSpeed />
