@@ -42,22 +42,24 @@ export const Hero = () => {
         src={repairBench}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-[75%_80%] md:object-[75%_80%]"
+        className="absolute inset-0 w-full h-full object-cover object-[right_center] md:object-[75%_80%]"
+        style={{ objectPosition: undefined }}
         loading="eager"
         fetchPriority="high"
       />
 
-      {/* Gradient overlay: strong left, light right, subtle green tint */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/[0.92] via-background/[0.78] to-background/[0.15]" />
+      {/* Horizontal scrim: left opaque → right transparent */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/[0.95] via-background/[0.80] to-background/[0.12]" />
+      {/* Subtle brand tint */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.04] via-primary/[0.02] to-transparent" />
-      {/* Bottom fade for smooth transition */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      {/* Vertical fade: bottom fades into page */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
-      {/* Mobile: stronger overlay for readability */}
-      <div className="absolute inset-0 bg-background/[0.55] md:hidden" />
+      {/* Mobile: extra overlay for readability */}
+      <div className="absolute inset-0 bg-background/[0.60] md:hidden" />
 
       <div className="container relative py-14 md:py-20 lg:py-24" style={{ minHeight: 'min(720px, 85vh)' }}>
-        <div className="max-w-xl lg:max-w-2xl text-left">
+        <div className="max-w-xl lg:max-w-[600px] text-left">
           {/* Location badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium text-muted-foreground mb-5 animate-fade-in">
             <MapPin className="w-4 h-4 text-primary" />
@@ -76,28 +78,24 @@ export const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-start gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-2 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button variant="whatsapp" size="xl" asChild onClick={handleWhatsAppClick}>
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp for a quick quote
               </a>
             </Button>
-            <div className="flex items-center gap-3">
-              <Button variant="cta" size="lg" asChild>
-                <a href={LOCATIONS.zebbug.phoneUrl} onClick={() => trackEvent('call_click', { source: 'hero' })}>
-                  <Phone className="w-5 h-5" />
-                  Call
-                </a>
-              </Button>
-              <Button variant="heroSecondary" size="lg" asChild onClick={() => trackEvent('directions_click', { source: 'hero' })}>
-                <a href="#locations">
-                  <MapPin className="w-5 h-5" />
-                  Get directions
-                </a>
-              </Button>
-            </div>
+            <Button variant="cta" size="lg" asChild>
+              <a href={LOCATIONS.zebbug.phoneUrl} onClick={() => trackEvent('call_click', { source: 'hero' })}>
+                <Phone className="w-5 h-5" />
+                Call us
+              </a>
+            </Button>
           </div>
+          {/* Microcopy */}
+          <p className="text-xs text-muted-foreground mb-6 animate-slide-up" style={{ animationDelay: '0.22s' }}>
+            Fast replies during opening hours.
+          </p>
 
           {/* Social proof badges */}
           <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.25s' }}>
@@ -140,10 +138,10 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Instant Quote block - below the hero image area */}
-      <div className="relative bg-background">
-        <div className="container py-8">
-          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto text-left">
+      {/* Instant Quote card: overlaps hero bottom on desktop */}
+      <div className="relative md:-mt-16 z-10">
+        <div className="container pb-8 md:pb-12">
+          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto text-left shadow-lg">
             <p className="text-sm font-semibold text-foreground mb-3 text-center">Instant quote</p>
             
             {/* Device type */}
