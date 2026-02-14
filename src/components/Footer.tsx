@@ -1,29 +1,27 @@
 import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
 import { 
   trackEvent, 
-  getPhoneUrl, 
   getWhatsAppUrl, 
   getEmailUrl, 
   LOCATIONS, 
   OPENING_HOURS,
-  PHONE_NUMBER,
   WHATSAPP_NUMBER,
   EMAIL
 } from '@/lib/tracking';
-import logoIcon from '@/assets/QF_Logo_Sticker.png';
+import logoFull from '@/assets/QuickFix_logo_cropped_transparent.png';
 
 export const Footer = () => {
   return (
     <footer className="bg-foreground text-background">
-      <div className="container py-12 md:py-16">
+      <div className="container py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand + Contact */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4">
               <img 
-                src={logoIcon} 
-                alt="QuickFix" 
-                className="h-12 brightness-0 invert"
+                src={logoFull} 
+                alt="QuickFix Malta" 
+                className="h-10 brightness-0 invert"
               />
             </div>
             <p className="text-background/70 text-sm mb-4">
@@ -31,12 +29,20 @@ export const Footer = () => {
             </p>
             <div className="space-y-2">
               <a
-                href={getPhoneUrl()}
-                onClick={() => trackEvent('call_click', { source: 'footer' })}
+                href={LOCATIONS.zebbug.phoneUrl}
+                onClick={() => trackEvent('call_click', { source: 'footer', location: 'zebbug' })}
                 className="flex items-center gap-2 text-sm text-background/70 hover:text-primary transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                {PHONE_NUMBER}
+                Żebbuġ: {LOCATIONS.zebbug.phone}
+              </a>
+              <a
+                href={LOCATIONS.fgura.phoneUrl}
+                onClick={() => trackEvent('call_click', { source: 'footer', location: 'fgura' })}
+                className="flex items-center gap-2 text-sm text-background/70 hover:text-primary transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                Fgura: {LOCATIONS.fgura.phone}
               </a>
               <a
                 href={getWhatsAppUrl()}
@@ -46,7 +52,7 @@ export const Footer = () => {
                 className="flex items-center gap-2 text-sm text-background/70 hover:text-primary transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                {WHATSAPP_NUMBER}
+                WhatsApp: {WHATSAPP_NUMBER}
               </a>
               <a
                 href={getEmailUrl()}
@@ -126,7 +132,7 @@ export const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-background/10">
+        <div className="mt-10 pt-6 border-t border-background/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/50">
             <p>© {new Date().getFullYear()} QuickFix Malta. All rights reserved.</p>
             <div className="flex items-center gap-6">

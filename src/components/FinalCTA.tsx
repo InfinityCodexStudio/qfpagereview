@@ -1,34 +1,26 @@
 import { MessageCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackEvent, getWhatsAppUrl, getPhoneUrl } from '@/lib/tracking';
+import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
 
 export const FinalCTA = () => {
-  const handleWhatsAppClick = () => {
-    trackEvent('whatsapp_click', { source: 'final_cta' });
-  };
-
-  const handleCallClick = () => {
-    trackEvent('call_click', { source: 'final_cta' });
-  };
-
   return (
-    <section className="py-16 md:py-20 bg-primary">
+    <section className="py-12 md:py-16 bg-primary">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-5">
             Ready to get your device fixed?
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-5">
             <Button
               size="xl"
               className="bg-white text-primary hover:bg-white/90 font-semibold"
               asChild
-              onClick={handleWhatsAppClick}
+              onClick={() => trackEvent('whatsapp_click', { source: 'final_cta' })}
             >
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
-                Book a repair on WhatsApp
+                WhatsApp for a quick quote
               </a>
             </Button>
             <Button
@@ -36,9 +28,9 @@ export const FinalCTA = () => {
               variant="outline"
               className="border-2 border-white text-white bg-transparent hover:bg-white/10"
               asChild
-              onClick={handleCallClick}
+              onClick={() => trackEvent('call_click', { source: 'final_cta' })}
             >
-              <a href={getPhoneUrl()}>
+              <a href={LOCATIONS.zebbug.phoneUrl}>
                 <Phone className="w-5 h-5" />
                 Call us now
               </a>

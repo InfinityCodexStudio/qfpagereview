@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { LOCATIONS, OPENING_HOURS, PHONE_NUMBER, EMAIL } from '@/lib/tracking';
+import { LOCATIONS, OPENING_HOURS, PHONE_ZEBBUG, EMAIL } from '@/lib/tracking';
 
 // LocalBusiness Schema for both locations
 const generateLocalBusinessSchema = () => {
@@ -8,7 +8,7 @@ const generateLocalBusinessSchema = () => {
     "@type": "LocalBusiness",
     "name": "QuickFix Malta",
     "description": "Professional phone, tablet, laptop, and game console repairs in Malta. Same-day repairs, 90-day warranty, two locations in Żebbuġ and Fgura.",
-    "telephone": PHONE_NUMBER,
+    "telephone": PHONE_ZEBBUG,
     "email": EMAIL,
     "url": "https://quickfixmalta.com",
     "priceRange": "€€",
@@ -85,10 +85,8 @@ const generateLocalBusinessSchema = () => {
 
 export const SEO = () => {
   useEffect(() => {
-    // Update document title
     document.title = "QuickFix Malta | Phone & Device Repairs in Żebbuġ & Fgura";
 
-    // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 
@@ -101,7 +99,6 @@ export const SEO = () => {
       document.head.appendChild(meta);
     }
 
-    // Add Open Graph tags
     const ogTags = [
       { property: 'og:title', content: 'QuickFix Malta | Phone & Device Repairs' },
       { property: 'og:description', content: 'Same-day phone repairs in Malta. Screen replacements, battery fixes & more. 90-day warranty. Żebbuġ & Fgura locations.' },
@@ -119,14 +116,13 @@ export const SEO = () => {
       tag.setAttribute('content', content);
     });
 
-    // Add LocalBusiness Schema
     const existingSchema = document.querySelector('script[type="application/ld+json"]');
     if (existingSchema) {
       existingSchema.remove();
     }
 
     const schemas = generateLocalBusinessSchema();
-    schemas.forEach((schema, index) => {
+    schemas.forEach((schema) => {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.text = JSON.stringify(schema);
@@ -134,7 +130,6 @@ export const SEO = () => {
     });
 
     return () => {
-      // Cleanup schemas on unmount
       document.querySelectorAll('script[type="application/ld+json"]').forEach(el => el.remove());
     };
   }, []);

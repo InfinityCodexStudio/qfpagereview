@@ -19,15 +19,15 @@ export const CommonFixes = () => {
   };
 
   return (
-    <section id="common-fixes" className="section-padding bg-secondary">
+    <section id="common-fixes" className="py-12 md:py-18 bg-secondary">
       <div className="container">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             Common fixes
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            These are the issues we see most often. Quick turnaround on most repairs.
+            These are the issues we see most often. Tap a fix to message us on WhatsApp.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export const CommonFixes = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleFixClick(fix.label)}
-              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center"
+              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
             >
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                 {fix.label}
@@ -53,9 +53,9 @@ export const CommonFixes = () => {
         </div>
 
         {/* Not listed */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-6">
           <a 
-            href={getWhatsAppUrl("Hi, I have an issue that's not listed. My device is [] and the problem is [].")}
+            href={getWhatsAppUrl("Hi QuickFix, I have an issue that's not listed. My device is [MODEL] and the problem is [DESCRIBE].")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
@@ -66,7 +66,7 @@ export const CommonFixes = () => {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-xs text-muted-foreground text-center mt-6 max-w-2xl mx-auto">
+        <p className="text-xs text-muted-foreground text-center mt-5 max-w-2xl mx-auto">
           Prices vary by device model and generation. Final quote confirmed before repair. Diagnostic fee waived if you proceed with repair.
         </p>
       </div>

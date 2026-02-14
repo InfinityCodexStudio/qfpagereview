@@ -11,18 +11,18 @@ const tiers = [
     price: 'Base repair price',
     priceNote: '',
     cta: 'Book standard',
-    message: "Hi, I need a repair. My device is [] and the issue is [].",
+    message: "Hi QuickFix, I'd like to book a standard repair.\n\nDevice: \nIssue: \nLocation (Żebbuġ / Fgura): \n\nThanks!",
     featured: false,
   },
   {
     icon: Zap,
     title: 'Same-Day Priority',
-    turnaround: 'Guaranteed same-day completion',
+    turnaround: 'Same-day completion',
     description: 'We prioritise your repair',
     price: '+€15 on any repair',
-    priceNote: '(Waived if we don\'t deliver same day)',
+    priceNote: 'Subject to parts availability. If we can\'t complete same day, priority fee is waived.',
     cta: 'Book priority',
-    message: "Hi, I'd like to book a Same-Day Priority repair (+€15). My device is [] and the issue is [].",
+    message: "Hi QuickFix, I'd like to book a Same-Day Priority repair (+€15).\n\nDevice: \nIssue: \nLocation (Żebbuġ / Fgura): \n\nThanks!",
     featured: true,
   },
   {
@@ -33,7 +33,7 @@ const tiers = [
     price: '€15 one-way | €30 round trip',
     priceNote: '',
     cta: 'Book pickup',
-    message: "Hi, I'd like to book pickup and delivery (€30 round trip). My device is [] and the issue is []. My address is [].",
+    message: "Hi QuickFix, I'd like to book pickup and delivery.\n\nDevice: \nIssue: \nMy address: \n\nRound trip (€30) or one-way (€15)?\n\nThanks!",
     featured: false,
   },
 ];
@@ -44,11 +44,10 @@ export const ChooseYourSpeed = () => {
   };
 
   return (
-    <section id="speed-tiers" className="section-padding bg-background">
+    <section id="speed-tiers" className="py-12 md:py-18 bg-background">
       <div className="container">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             Choose your speed
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -56,8 +55,7 @@ export const ChooseYourSpeed = () => {
           </p>
         </div>
 
-        {/* Tier cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {tiers.map((tier, index) => (
             <div
               key={index}
@@ -73,26 +71,17 @@ export const ChooseYourSpeed = () => {
                 </div>
               )}
 
-              {/* Icon */}
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
                 tier.featured ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary'
               }`}>
                 <tier.icon className="w-6 h-6" />
               </div>
 
-              {/* Content */}
-              <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                {tier.title}
-              </h3>
-              <p className="text-sm font-medium text-foreground mb-1">
-                {tier.turnaround}
-              </p>
-              <p className="text-sm text-muted-foreground mb-4">
-                {tier.description}
-              </p>
+              <h3 className="font-display text-xl font-bold text-foreground mb-2">{tier.title}</h3>
+              <p className="text-sm font-medium text-foreground mb-1">{tier.turnaround}</p>
+              <p className="text-sm text-muted-foreground mb-4">{tier.description}</p>
 
-              {/* Price */}
-              <div className="mb-6">
+              <div className="mb-5">
                 <p className={`text-lg font-bold ${tier.featured ? 'text-primary' : 'text-foreground'}`}>
                   {tier.price}
                 </p>
@@ -101,9 +90,8 @@ export const ChooseYourSpeed = () => {
                 )}
               </div>
 
-              {/* CTA */}
               <Button
-                variant={tier.featured ? 'hero' : 'outline'}
+                variant={tier.featured ? 'whatsapp' : 'outline'}
                 className="mt-auto w-full"
                 asChild
                 onClick={() => handleTierClick(tier.title)}
@@ -117,8 +105,7 @@ export const ChooseYourSpeed = () => {
           ))}
         </div>
 
-        {/* Note below cards */}
-        <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+        <p className="text-center text-sm text-muted-foreground mt-6 max-w-2xl mx-auto">
           Can't make it to our shop? We'll collect your device, fix it, and bring it back, often same day.
         </p>
       </div>
