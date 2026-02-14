@@ -1,5 +1,3 @@
-import { MessageSquare, MapPin, Wrench } from 'lucide-react';
-
 const steps = [
   {
     step: '1',
@@ -23,9 +21,9 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="py-12 md:py-18 bg-background">
+    <section className="py-10 md:py-14 bg-background">
       <div className="container">
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             How it works
           </h2>
@@ -34,16 +32,16 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
           {steps.map((step, index) => (
             <div key={index} className="relative text-center">
               {index < 2 && (
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-border" />
               )}
               
-              <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-5">
-                <span className="text-3xl">{step.emoji}</span>
-                <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">
+              <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <span className="text-2xl">{step.emoji}</span>
+                <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
                   {step.step}
                 </span>
               </div>

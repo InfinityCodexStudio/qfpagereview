@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone } from 'lucide-react';
+import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ThumbsUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, getWhatsAppUrlForQuote, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
+
+const FACEBOOK_REVIEWS_URL = 'https://www.facebook.com/quickfixmalta/reviews';
 
 const trustBullets = [
   { icon: Clock, text: 'Same-day on many repairs' },
@@ -34,8 +36,10 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary-light to-background">
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
+      {/* Subtle warm background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-background/[0.90]" />
+        <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.1) 1px, transparent 0)`,
           backgroundSize: '32px 32px'
         }} />
@@ -61,7 +65,7 @@ export const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button variant="whatsapp" size="xl" asChild onClick={handleWhatsAppClick}>
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
@@ -84,8 +88,35 @@ export const Hero = () => {
             </div>
           </div>
 
+          {/* Social proof badges */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+            <a 
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                ))}
+              </div>
+              <span>4.9/5 on Google (120+ reviews)</span>
+            </a>
+            <span className="hidden sm:inline text-border">|</span>
+            <a
+              href={FACEBOOK_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ThumbsUp className="w-3.5 h-3.5 text-[hsl(221,44%,41%)]" />
+              <span>98% recommend (267 reviews)</span>
+            </a>
+          </div>
+
           {/* Instant Quote micro-block */}
-          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto mb-8 animate-slide-up text-left" style={{ animationDelay: '0.25s' }}>
+          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto mb-8 animate-slide-up text-left" style={{ animationDelay: '0.3s' }}>
             <p className="text-sm font-semibold text-foreground mb-3 text-center">Instant quote</p>
             
             {/* Device type */}
@@ -155,7 +186,7 @@ export const Hero = () => {
           </div>
 
           {/* Trust bullets */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 mb-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 mb-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
             {trustBullets.map((bullet, index) => (
               <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -166,24 +197,8 @@ export const Hero = () => {
             ))}
           </div>
 
-          {/* Google Reviews */}
-          <a 
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors animate-slide-up"
-            style={{ animationDelay: '0.4s' }}
-          >
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-accent text-accent" />
-              ))}
-            </div>
-            <span>4.9 from 120+ Google reviews</span>
-          </a>
-
           {/* Local touch */}
-          <p className="text-sm text-muted-foreground mt-3 animate-slide-up" style={{ animationDelay: '0.5s' }}>
+          <p className="text-sm text-muted-foreground mt-3 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             Serving Żebbuġ, Fgura, and all of Malta since 2020
           </p>
         </div>

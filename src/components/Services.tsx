@@ -1,13 +1,13 @@
-import { Smartphone, Monitor, Gamepad2, HardDrive, ArrowRight, Tablet, Laptop } from 'lucide-react';
+import { Smartphone, Monitor, Gamepad2, HardDrive, Tablet, Laptop, MonitorSmartphone, Battery, Plug, RectangleEllipsis, Camera, Droplets } from 'lucide-react';
 import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService } from '@/lib/tracking';
 
 const popularRepairs = [
-  { label: 'Screen replacement', price: 'from €70', issue: 'screen replacement' },
-  { label: 'Battery replacement', price: 'from €45', issue: 'battery replacement' },
-  { label: 'Charging port', price: 'from €40', issue: 'charging port repair' },
-  { label: 'Back glass', price: 'from €50', issue: 'back glass replacement' },
-  { label: 'Camera / buttons', price: 'Get quote', issue: 'camera or button repair' },
-  { label: 'Water damage (diagnostic)', price: '€30', issue: 'water damage diagnostic' },
+  { label: 'Screen replacement', price: 'from €70', issue: 'screen replacement', icon: MonitorSmartphone },
+  { label: 'Battery replacement', price: 'from €45', issue: 'battery replacement', icon: Battery },
+  { label: 'Charging port', price: 'from €40', issue: 'charging port repair', icon: Plug },
+  { label: 'Back glass', price: 'from €50', issue: 'back glass replacement', icon: RectangleEllipsis },
+  { label: 'Camera / buttons', price: 'Get quote', issue: 'camera or button repair', icon: Camera },
+  { label: 'Water damage (diagnostic)', price: '€30', issue: 'water damage diagnostic', icon: Droplets },
 ];
 
 const deviceCategories = [
@@ -31,7 +31,7 @@ export const Services = () => {
   return (
     <section id="services" className="py-12 md:py-18 bg-background">
       <div className="container">
-        {/* Popular repairs - lead with problems */}
+        {/* Popular repairs */}
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             Popular repairs
@@ -51,7 +51,10 @@ export const Services = () => {
               onClick={() => handleRepairClick(repair.issue)}
               className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
             >
-              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors mb-1">
+                <repair.icon className="w-4.5 h-4.5 text-primary" />
+              </div>
+              <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                 {repair.label}
               </span>
               <span className="text-xs font-semibold text-primary">
@@ -61,7 +64,7 @@ export const Services = () => {
           ))}
         </div>
 
-        {/* Devices we repair - secondary */}
+        {/* Devices we repair */}
         <div className="text-center mb-6">
           <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
             Devices we repair

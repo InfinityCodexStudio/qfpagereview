@@ -1,4 +1,4 @@
-import { HelpCircle, MessageCircle } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrl } from '@/lib/tracking';
 
 const fixes = [
@@ -18,10 +18,10 @@ export const CommonFixes = () => {
     trackEvent('fix_click', { issue, source: 'common_fixes' });
   };
 
+  // 9 items: 4+4+1 on desktop (md:grid-cols-4). Center last row.
   return (
     <section id="common-fixes" className="py-12 md:py-18 bg-secondary">
       <div className="container">
-        {/* Section header */}
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
             Common fixes
@@ -31,8 +31,8 @@ export const CommonFixes = () => {
           </p>
         </div>
 
-        {/* Fixes grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+        {/* Use flex-wrap with centered last row */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
           {fixes.map((fix, index) => (
             <a
               key={index}
@@ -40,7 +40,7 @@ export const CommonFixes = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleFixClick(fix.label)}
-              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
+              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center w-[calc(50%-6px)] md:w-[calc(25%-12px)]"
             >
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                 {fix.label}
@@ -52,7 +52,6 @@ export const CommonFixes = () => {
           ))}
         </div>
 
-        {/* Not listed */}
         <div className="text-center mt-6">
           <a 
             href={getWhatsAppUrl("Hi QuickFix, I have an issue that's not listed. My device is [MODEL] and the problem is [DESCRIBE].")}
@@ -65,7 +64,6 @@ export const CommonFixes = () => {
           </a>
         </div>
 
-        {/* Disclaimer */}
         <p className="text-xs text-muted-foreground text-center mt-5 max-w-2xl mx-auto">
           Prices vary by device model and generation. Final quote confirmed before repair. Diagnostic fee waived if you proceed with repair.
         </p>

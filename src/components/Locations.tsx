@@ -7,6 +7,37 @@ const locationCards = [
   { id: 'fgura' as const, ...LOCATIONS.fgura },
 ];
 
+const LocationButton = ({
+  variant,
+  href,
+  onClick,
+  icon: Icon,
+  label,
+  external = false,
+}: {
+  variant: 'whatsapp' | 'locationOutline' | 'location';
+  href: string;
+  onClick: () => void;
+  icon: typeof MapPin;
+  label: string;
+  external?: boolean;
+}) => (
+  <Button
+    variant={variant}
+    className="flex-1 h-11 min-w-[100px] rounded-lg text-sm"
+    asChild
+    onClick={onClick}
+  >
+    <a
+      href={href}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      <Icon className="w-4 h-4" />
+      {label}
+    </a>
+  </Button>
+);
+
 export const Locations = () => {
   return (
     <section id="locations" className="py-12 md:py-18 bg-secondary">
@@ -22,7 +53,7 @@ export const Locations = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {locationCards.map((location) => (
-            <div key={location.id} className="bg-card rounded-xl border border-border p-6 md:p-8 shadow-sm">
+            <div key={location.id} className="bg-card rounded-xl border border-border p-6 md:p-8 shadow-sm flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
                   <MapPin className="w-6 h-6 text-primary-foreground" />
@@ -44,31 +75,30 @@ export const Locations = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="whatsapp" className="flex-1" asChild
+              <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                <LocationButton
+                  variant="whatsapp"
+                  href={getWhatsAppUrl()}
                   onClick={() => trackEvent('whatsapp_click', { location: location.id, source: 'locations_section' })}
-                >
-                  <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
-                  </a>
-                </Button>
-                <Button variant="locationOutline" className="flex-1" asChild
+                  icon={MessageCircle}
+                  label="WhatsApp"
+                  external
+                />
+                <LocationButton
+                  variant="locationOutline"
+                  href={location.phoneUrl}
                   onClick={() => trackEvent('call_click', { location: location.id, source: 'locations_section' })}
-                >
-                  <a href={location.phoneUrl}>
-                    <Phone className="w-4 h-4" />
-                    Call {location.id === 'zebbug' ? 'Żebbuġ' : 'Fgura'}
-                  </a>
-                </Button>
-                <Button variant="location" className="flex-1" asChild
+                  icon={Phone}
+                  label={`Call ${location.id === 'zebbug' ? 'Żebbuġ' : 'Fgura'}`}
+                />
+                <LocationButton
+                  variant="location"
+                  href={location.directionsUrl}
                   onClick={() => trackEvent('directions_click', { location: location.id, source: 'locations_section' })}
-                >
-                  <a href={location.directionsUrl} target="_blank" rel="noopener noreferrer">
-                    <MapPin className="w-4 h-4" />
-                    Directions
-                  </a>
-                </Button>
+                  icon={MapPin}
+                  label="Directions"
+                  external
+                />
               </div>
             </div>
           ))}
