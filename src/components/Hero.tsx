@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ThumbsUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, getWhatsAppUrlForQuote, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
+import repairBench from '@/assets/repair-bench.png';
 
 const FACEBOOK_REVIEWS_URL = 'https://www.facebook.com/quickfixmalta/reviews';
 
@@ -35,20 +36,30 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-primary-light to-background">
-      {/* Subtle warm background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-background/[0.90]" />
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, hsl(var(--primary) / 0.1) 1px, transparent 0)`,
-          backgroundSize: '32px 32px'
-        }} />
-      </div>
-      
-      <div className="container relative py-12 md:py-18">
-        <div className="max-w-3xl mx-auto text-center">
+    <section className="relative overflow-hidden">
+      {/* Background image */}
+      <img
+        src={repairBench}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-[75%_80%] md:object-[75%_80%]"
+        loading="eager"
+        fetchPriority="high"
+      />
+
+      {/* Gradient overlay: strong left, light right, subtle green tint */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/[0.92] via-background/[0.78] to-background/[0.15]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.04] via-primary/[0.02] to-transparent" />
+      {/* Bottom fade for smooth transition */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+
+      {/* Mobile: stronger overlay for readability */}
+      <div className="absolute inset-0 bg-background/[0.55] md:hidden" />
+
+      <div className="container relative py-14 md:py-20 lg:py-24" style={{ minHeight: 'min(720px, 85vh)' }}>
+        <div className="max-w-xl lg:max-w-2xl text-left">
           {/* Location badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border text-sm font-medium text-muted-foreground mb-5 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium text-muted-foreground mb-5 animate-fade-in">
             <MapPin className="w-4 h-4 text-primary" />
             Two locations: Żebbuġ + Fgura
           </div>
@@ -60,12 +71,12 @@ export const Hero = () => {
           </h1>
 
           {/* Subhead */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-lg animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Same-day on many repairs. Depends on parts and device condition. 90-day guarantee on all repairs. Walk in or we come to you.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button variant="whatsapp" size="xl" asChild onClick={handleWhatsAppClick}>
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
@@ -89,7 +100,7 @@ export const Hero = () => {
           </div>
 
           {/* Social proof badges */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.25s' }}>
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -115,8 +126,24 @@ export const Hero = () => {
             </a>
           </div>
 
-          {/* Instant Quote micro-block */}
-          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto mb-8 animate-slide-up text-left" style={{ animationDelay: '0.3s' }}>
+          {/* Trust bullets */}
+          <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            {trustBullets.map((bullet, index) => (
+              <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <div className="w-8 h-8 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center">
+                  <bullet.icon className="w-4 h-4 text-primary" />
+                </div>
+                {bullet.text}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Instant Quote block - below the hero image area */}
+      <div className="relative bg-background">
+        <div className="container py-8">
+          <div className="bg-card border border-border rounded-xl p-5 max-w-lg mx-auto text-left">
             <p className="text-sm font-semibold text-foreground mb-3 text-center">Instant quote</p>
             
             {/* Device type */}
@@ -185,20 +212,8 @@ export const Hero = () => {
             </Button>
           </div>
 
-          {/* Trust bullets */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 mb-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
-            {trustBullets.map((bullet, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                  <bullet.icon className="w-4 h-4 text-primary" />
-                </div>
-                {bullet.text}
-              </div>
-            ))}
-          </div>
-
           {/* Local touch */}
-          <p className="text-sm text-muted-foreground mt-3 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-sm text-muted-foreground mt-4 text-center">
             Serving Żebbuġ, Fgura, and all of Malta since 2020
           </p>
         </div>
