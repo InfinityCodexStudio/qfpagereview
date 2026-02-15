@@ -20,7 +20,7 @@ export const CommonFixes = () => {
 
   // 9 items: 4+4+1 on desktop (md:grid-cols-4). Center last row.
   return (
-    <section id="common-fixes" className="py-12 md:py-18 bg-secondary">
+    <section id="common-fixes" className="py-10 md:py-16 bg-secondary">
       <div className="container">
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">

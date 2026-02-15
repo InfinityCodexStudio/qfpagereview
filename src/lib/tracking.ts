@@ -7,7 +7,9 @@ type TrackingEvent =
   | 'form_submit'
   | 'nav_click'
   | 'service_click'
-  | 'fix_click';
+  | 'fix_click'
+  | 'estimate_start'
+  | 'estimate_complete';
 
 interface TrackingData {
   location?: 'zebbug' | 'fgura';

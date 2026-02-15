@@ -4,7 +4,7 @@ import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
 
 export const FinalCTA = () => {
   return (
-    <section className="py-12 md:py-16 bg-primary">
+    <section className="py-10 md:py-14 bg-primary">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-5">
