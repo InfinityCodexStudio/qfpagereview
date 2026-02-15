@@ -1,15 +1,7 @@
-import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ThumbsUp } from 'lucide-react';
+import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
 import repairBench from '@/assets/repair-bench.png';
-
-const FACEBOOK_REVIEWS_URL = 'https://www.facebook.com/quickfixmalta/reviews';
-
-const trustBullets = [
-  { icon: Clock, text: 'Same-day on most repairs' },
-  { icon: Shield, text: '90-day guarantee' },
-  { icon: Lock, text: 'Your data stays safe' },
-];
 
 export const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -88,43 +80,31 @@ export const Hero = () => {
             Fast replies during opening hours.
           </p>
 
-          {/* Social proof badges */}
-          <div className="flex flex-col sm:flex-row items-start gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          {/* Trust row — compact single line */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-5 animate-slide-up" style={{ animationDelay: '0.25s' }}>
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                  <Star key={i} className="w-3 h-3 fill-accent text-accent" />
                 ))}
               </div>
-              <span>4.9/5 on Google (120+ reviews)</span>
+              4.9 (120+)
             </a>
-            <span className="hidden sm:inline text-border">|</span>
-            <a
-              href={FACEBOOK_REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ThumbsUp className="w-3.5 h-3.5 text-[hsl(221,44%,41%)]" />
-              <span>98% recommend (267 reviews)</span>
-            </a>
-          </div>
-
-          {/* Trust bullets */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-row items-start gap-3 md:gap-5 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            {trustBullets.map((bullet, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <div className="w-8 h-8 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
-                  <bullet.icon className="w-4 h-4 text-primary" />
-                </div>
-                {bullet.text}
-              </div>
-            ))}
+            <span className="text-border">·</span>
+            <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-primary" />
+              90-day guarantee
+            </span>
+            <span className="text-border">·</span>
+            <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-primary" />
+              Same-day on most repairs
+            </span>
           </div>
         </div>
       </div>
