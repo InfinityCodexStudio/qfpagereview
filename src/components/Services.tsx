@@ -1,13 +1,15 @@
-import { Smartphone, Monitor, Gamepad2, HardDrive, Tablet, Laptop, MonitorSmartphone, Battery, Plug, RectangleEllipsis, Camera, Droplets } from 'lucide-react';
-import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService } from '@/lib/tracking';
+import { Smartphone, Monitor, Gamepad2, HardDrive, Tablet, Laptop, HelpCircle } from 'lucide-react';
+import { trackEvent, getWhatsAppUrlForFix, getWhatsAppUrlForDataRecovery, getWhatsAppUrlForService, getWhatsAppUrl } from '@/lib/tracking';
 
-const popularRepairs = [
-  { label: 'Screen replacement', price: 'from €70', issue: 'screen replacement', icon: MonitorSmartphone },
-  { label: 'Battery replacement', price: 'from €45', issue: 'battery replacement', icon: Battery },
-  { label: 'Charging port', price: 'from €40', issue: 'charging port repair', icon: Plug },
-  { label: 'Back glass', price: 'from €50', issue: 'back glass replacement', icon: RectangleEllipsis },
-  { label: 'Camera / buttons', price: 'Get quote', issue: 'camera or button repair', icon: Camera },
-  { label: 'Water damage (diagnostic)', price: '€30', issue: 'water damage diagnostic', icon: Droplets },
+const fixes = [
+  { label: 'Screen replacement', price: 'from €70', issue: 'screen replacement' },
+  { label: 'Battery replacement', price: 'from €45', issue: 'battery replacement' },
+  { label: 'Charging port', price: 'from €40', issue: 'charging port repair' },
+  { label: 'Back glass', price: 'from €50', issue: 'back glass replacement' },
+  { label: 'Speaker / microphone', price: 'from €40', issue: 'speaker or microphone repair' },
+  { label: 'Water damage', price: '€30 diagnostic', issue: 'water damage diagnostic' },
+  { label: 'Motherboard / diagnostics', price: '€30 diagnostic', issue: 'motherboard or diagnostic' },
+  { label: 'Data recovery', price: 'Get quote', issue: 'data recovery', isDataRecovery: true },
 ];
 
 const deviceCategories = [
@@ -15,13 +17,13 @@ const deviceCategories = [
   { icon: Tablet, title: 'Tablets', serviceType: 'tablet' },
   { icon: Laptop, title: 'Laptops', serviceType: 'laptop' },
   { icon: Monitor, title: 'Computers', serviceType: 'computer' },
-  { icon: Gamepad2, title: 'Game Consoles', serviceType: 'game console' },
+  { icon: Gamepad2, title: 'Consoles', serviceType: 'game console' },
   { icon: HardDrive, title: 'Data Recovery', isDataRecovery: true },
 ];
 
 export const Services = () => {
-  const handleRepairClick = (issue: string) => {
-    trackEvent('fix_click', { issue, source: 'popular_repairs' });
+  const handleFixClick = (issue: string) => {
+    trackEvent('fix_click', { issue, source: 'what_needs_fixed' });
   };
 
   const handleDeviceClick = (service: string) => {
@@ -29,69 +31,74 @@ export const Services = () => {
   };
 
   return (
-    <section id="services" className="py-12 md:py-18 bg-background">
+    <section id="services" className="py-10 md:py-16 bg-secondary">
       <div className="container">
-        {/* Popular repairs */}
-        <div className="text-center mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Popular repairs
+        {/* What do you need fixed? */}
+        <div className="text-center mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+            What do you need fixed?
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
             Tap a repair to message us on WhatsApp for a quick quote.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto mb-14">
-          {popularRepairs.map((repair, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+          {fixes.map((fix, index) => (
             <a
               key={index}
-              href={getWhatsAppUrlForFix(repair.issue)}
+              href={fix.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForFix(fix.issue)}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => handleRepairClick(repair.issue)}
-              className="group flex flex-col items-center justify-center gap-2 p-4 md:p-5 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
+              onClick={() => handleFixClick(fix.issue)}
+              className="group flex flex-col items-center justify-center gap-1.5 p-4 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md cursor-pointer transition-all text-center"
             >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors mb-1">
-                <repair.icon className="w-4.5 h-4.5 text-primary" />
-              </div>
-              <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
-                {repair.label}
+              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                {fix.label}
               </span>
               <span className="text-xs font-semibold text-primary">
-                {repair.price}
+                {fix.price}
               </span>
             </a>
           ))}
         </div>
 
-        {/* Devices we repair */}
-        <div className="text-center mb-6">
-          <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+        <div className="text-center mt-5">
+          <a
+            href={getWhatsAppUrl("Hi QuickFix, I have an issue that's not listed. My device is [MODEL] and the problem is [DESCRIBE].")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          >
+            <HelpCircle className="w-4 h-4" />
+            Issue not listed? Ask us.
+          </a>
+        </div>
+
+        <p className="text-xs text-muted-foreground text-center mt-4 max-w-2xl mx-auto">
+          Prices vary by device model and generation. Final quote confirmed before repair. Diagnostic fee waived if you proceed with repair.
+        </p>
+
+        {/* Devices we repair — compact strip */}
+        <div className="mt-10 text-center">
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
             Devices we repair
           </h3>
-          <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
-            From smartphones to game consoles. Professional repairs with quality parts.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
-          {deviceCategories.map((device, index) => (
-            <a
-              key={index}
-              href={device.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForService(device.serviceType || device.title)}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleDeviceClick(device.title)}
-              className="group flex flex-col items-center gap-2 p-4 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md transition-all text-center"
-            >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <device.icon className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+          <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+            {deviceCategories.map((device, index) => (
+              <a
+                key={index}
+                href={device.isDataRecovery ? getWhatsAppUrlForDataRecovery() : getWhatsAppUrlForService(device.serviceType || device.title)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleDeviceClick(device.title)}
+                className="group inline-flex items-center gap-2 px-4 py-2 bg-card rounded-full border border-border hover:border-primary transition-all text-sm font-medium text-foreground hover:text-primary"
+              >
+                <device.icon className="w-4 h-4 text-primary" />
                 {device.title}
-              </span>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
