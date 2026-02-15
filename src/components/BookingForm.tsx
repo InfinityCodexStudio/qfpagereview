@@ -84,12 +84,12 @@ export const BookingForm = () => {
   return (
     <section id="book" className="py-10 md:py-16 bg-secondary">
       <div className="container">
-        <div className="text-center mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+        <div className="text-center mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
             Prefer a form?
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Fill in your details and we'll get back to you within 1 hour during business hours.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Fastest: WhatsApp. Form replies within 1 hour during business hours.
           </p>
         </div>
 
