@@ -3,25 +3,31 @@ import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl } from '@/lib/tracking';
 
-const issueChips = ['Screen', 'Battery', 'Charging', 'Back glass', 'Water', 'Other'];
+const issueChips = ['Screen', 'Battery', 'Charging', 'Back glass', 'Speaker/Mic', 'Camera', 'Water', 'Other'];
 const locationChips = ['Żebbuġ', 'Fgura'];
 const speedOptions = [
   { label: 'Standard', note: '24–48 hrs' },
-  { label: 'Same-Day Priority', note: '+€15' },
-  { label: 'Pickup', note: '€15/€30' },
+  { label: 'Same-Day', note: '+€15' },
+];
+const pickupOptions = [
+  { label: 'No', value: '' },
+  { label: 'One-way (€15)', value: 'One-way pickup (€15)' },
+  { label: 'Round trip (€30)', value: 'Round trip pickup & delivery (€30)' },
 ];
 
 export const InstantQuote = () => {
   const [selectedIssue, setSelectedIssue] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedSpeed, setSelectedSpeed] = useState('');
+  const [selectedPickup, setSelectedPickup] = useState('');
   const [deviceModel, setDeviceModel] = useState('');
 
   const handleQuoteClick = () => {
-    trackEvent('estimate_complete', { issue: selectedIssue, source: 'instant_estimate' });
+    trackEvent('estimate_complete', { issue: selectedIssue, source: 'message_builder' });
     const modelLine = deviceModel.trim() ? `\nDevice: ${deviceModel.trim()}` : '';
     const speedLine = selectedSpeed ? `\nSpeed: ${selectedSpeed}` : '';
-    const message = `Hi QuickFix, I need help with: ${selectedIssue || '[ISSUE]'}.${modelLine}\nPreferred location: ${selectedLocation || '[Żebbuġ/Fgura]'}.${speedLine}\n\nPlease send an estimate. Thanks.`;
+    const pickupLine = selectedPickup ? `\nPickup: ${selectedPickup}` : '';
+    const message = `Hi QuickFix, I need help with: ${selectedIssue || '[ISSUE]'}.${modelLine}\nLocation: ${selectedLocation || '[Żebbuġ/Fgura]'}.${speedLine}${pickupLine}\n\nPlease confirm the final quote and earliest availability. Thanks.`;
     window.open(getWhatsAppUrl(message), '_blank');
   };
 
@@ -33,14 +39,14 @@ export const InstantQuote = () => {
     }`;
 
   return (
-    <section className="py-10 md:py-14 bg-primary/[0.03]">
+    <section className="py-8 md:py-12 bg-primary/[0.03]">
       <div className="container">
-        <div className="text-center mb-6">
+        <div className="text-center mb-5">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Get an estimate on WhatsApp <span className="text-muted-foreground font-normal text-lg">(30 sec)</span>
+            30-sec message builder
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto">
-            Pick your issue and location. We'll prefill the message for you.
+          <p className="text-muted-foreground text-sm max-w-md mx-auto">
+            Pick your options. We'll prefill a WhatsApp message for you.
           </p>
         </div>
 
@@ -52,18 +58,6 @@ export const InstantQuote = () => {
               {issueChips.map((i) => (
                 <button key={i} onClick={() => { setSelectedIssue(i); trackEvent('estimate_start', { issue: i }); }} className={chipClass(selectedIssue === i)}>
                   {i}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Location */}
-          <div className="mb-4">
-            <p className="text-sm font-medium text-muted-foreground mb-2">Location <span className="text-primary text-xs">*</span></p>
-            <div className="flex flex-wrap gap-2">
-              {locationChips.map((l) => (
-                <button key={l} onClick={() => setSelectedLocation(l)} className={chipClass(selectedLocation === l)}>
-                  {l}
                 </button>
               ))}
             </div>
@@ -81,8 +75,20 @@ export const InstantQuote = () => {
             />
           </div>
 
+          {/* Location */}
+          <div className="mb-4">
+            <p className="text-sm font-medium text-muted-foreground mb-2">Location</p>
+            <div className="flex flex-wrap gap-2">
+              {locationChips.map((l) => (
+                <button key={l} onClick={() => setSelectedLocation(l)} className={chipClass(selectedLocation === l)}>
+                  {l}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Speed */}
-          <div className="mb-5">
+          <div className="mb-4">
             <p className="text-sm font-medium text-muted-foreground mb-2">Speed</p>
             <div className="flex flex-wrap gap-2">
               {speedOptions.map((s) => (
@@ -93,12 +99,24 @@ export const InstantQuote = () => {
             </div>
           </div>
 
+          {/* Pickup */}
+          <div className="mb-5">
+            <p className="text-sm font-medium text-muted-foreground mb-2">Pickup</p>
+            <div className="flex flex-wrap gap-2">
+              {pickupOptions.map((p) => (
+                <button key={p.label} onClick={() => setSelectedPickup(p.value)} className={chipClass(selectedPickup === p.value)}>
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <Button variant="whatsapp" className="w-full" size="lg" onClick={handleQuoteClick}>
             <MessageCircle className="w-4 h-4" />
-            Send estimate on WhatsApp
+            Send on WhatsApp
           </Button>
           <p className="text-xs text-muted-foreground mt-2.5 text-center">
-            Estimate only. Final quote confirmed after quick checks.
+            Estimate only. Final quote confirmed on WhatsApp after we confirm model and parts.
           </p>
         </div>
       </div>

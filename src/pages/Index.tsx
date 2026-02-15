@@ -25,13 +25,12 @@ const Index = () => {
         <Hero />
         <Services />
         <InstantQuote />
-        <ChooseYourSpeed />
         <HowItWorks />
         <PickupDelivery />
         <Locations />
         <Testimonials />
-        <ProtectYourDevice />
         <FAQ />
+        <ProtectYourDevice />
         <BookingForm />
         <FinalCTA />
       </main>
