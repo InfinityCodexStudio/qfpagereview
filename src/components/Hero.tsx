@@ -38,47 +38,58 @@ export const Hero = () => {
       {/* Mobile: extra overlay for readability */}
       <div className="absolute inset-0 bg-background/[0.60] md:hidden" />
 
-      <div className="container relative py-16 md:py-24 lg:py-28" style={{ minHeight: 'min(720px, 85vh)' }}>
+      <div className="container relative py-12 md:py-24 lg:py-28" style={{ minHeight: 'min(720px, 85vh)' }}>
         <div className="max-w-xl lg:max-w-[560px] text-left">
           {/* Location badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium text-muted-foreground mb-5 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium text-muted-foreground mb-4 animate-fade-in">
             <MapPin className="w-4 h-4 text-primary" />
             Two locations: Żebbuġ + Fgura
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-4 animate-slide-up text-balance">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-3 animate-slide-up text-balance">
             Cracked screen?{' '}
             <span className="text-primary">Dead battery?</span>
           </h1>
 
           {/* Subhead */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-lg animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p className="text-lg md:text-xl text-muted-foreground mb-5 max-w-lg animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Same-day on most repairs. 90-day guarantee on all repairs. Walk in or we come to you.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-start gap-3 mb-2 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-1.5 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button variant="whatsapp" size="xl" asChild onClick={handleWhatsAppClick}>
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp for a quick quote
               </a>
             </Button>
-            <Button variant="cta" size="lg" asChild>
+            {/* Desktop: visible Call button */}
+            <Button variant="cta" size="lg" asChild className="hidden sm:inline-flex">
               <a href={LOCATIONS.zebbug.phoneUrl} onClick={() => trackEvent('call_click', { source: 'hero' })}>
                 <Phone className="w-5 h-5" />
                 Call us
               </a>
             </Button>
           </div>
+          {/* Mobile: small text link for calling */}
+          <a
+            href={LOCATIONS.zebbug.phoneUrl}
+            onClick={() => trackEvent('call_click', { source: 'hero_mobile_link' })}
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors sm:hidden animate-slide-up"
+            style={{ animationDelay: '0.22s' }}
+          >
+            <Phone className="w-3.5 h-3.5" />
+            Prefer calling?
+          </a>
           {/* Microcopy */}
-          <p className="text-xs text-muted-foreground mb-6 animate-slide-up" style={{ animationDelay: '0.22s' }}>
+          <p className="text-xs text-muted-foreground mb-5 mt-1.5 animate-slide-up" style={{ animationDelay: '0.22s' }}>
             Fast replies during opening hours.
           </p>
 
           {/* Social proof badges */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-6 animate-slide-up" style={{ animationDelay: '0.25s' }}>
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -105,10 +116,10 @@ export const Hero = () => {
           </div>
 
           {/* Trust bullets */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="grid grid-cols-2 sm:flex sm:flex-row items-start gap-3 md:gap-5 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {trustBullets.map((bullet, index) => (
               <div key={index} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <div className="w-8 h-8 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                   <bullet.icon className="w-4 h-4 text-primary" />
                 </div>
                 {bullet.text}
@@ -119,7 +130,7 @@ export const Hero = () => {
       </div>
 
       {/* Serving line */}
-      <div className="relative pb-6 md:pb-8">
+      <div className="relative pb-4 md:pb-8">
         <div className="container">
           <p className="text-sm text-muted-foreground text-center">
             Serving Żebbuġ, Fgura, and all of Malta since 2020

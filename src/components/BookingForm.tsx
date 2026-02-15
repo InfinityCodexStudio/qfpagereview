@@ -56,7 +56,7 @@ export const BookingForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="book" className="py-12 md:py-18 bg-secondary">
+      <section id="book" className="py-10 md:py-16 bg-secondary">
         <div className="container">
           <div className="max-w-xl mx-auto text-center p-8 bg-card rounded-xl border border-border">
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -82,7 +82,7 @@ export const BookingForm = () => {
   }
 
   return (
-    <section id="book" className="py-12 md:py-18 bg-secondary">
+    <section id="book" className="py-10 md:py-16 bg-secondary">
       <div className="container">
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">

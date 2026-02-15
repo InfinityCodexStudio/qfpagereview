@@ -45,7 +45,7 @@ export const ProtectYourDevice = () => {
   };
 
   return (
-    <section id="protect" className="py-12 md:py-18 bg-secondary">
+    <section id="protect" className="py-10 md:py-16 bg-secondary">
       <div className="container">
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">

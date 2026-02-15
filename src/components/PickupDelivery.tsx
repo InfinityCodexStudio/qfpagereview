@@ -4,7 +4,7 @@ import { trackEvent, getWhatsAppUrlForPickup } from '@/lib/tracking';
 
 export const PickupDelivery = () => {
   return (
-    <section className="py-10 bg-primary/5">
+    <section className="py-8 md:py-10 bg-primary/5">
       <div className="container">
         <div className="max-w-3xl mx-auto bg-card rounded-2xl border border-primary/20 p-6 md:p-8 shadow-sm">
           <div className="flex flex-col md:flex-row items-center gap-6">
