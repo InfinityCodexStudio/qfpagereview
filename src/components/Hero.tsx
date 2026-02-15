@@ -73,15 +73,15 @@ export const Hero = () => {
             style={{ animationDelay: '0.22s' }}
           >
             <Phone className="w-3.5 h-3.5" />
-            Prefer calling?
+            Prefer calling? Tap here.
           </a>
           {/* Microcopy */}
           <p className="text-xs text-muted-foreground mb-5 mt-1.5 animate-slide-up" style={{ animationDelay: '0.22s' }}>
             Fast replies during opening hours.
           </p>
 
-          {/* Trust row — compact single line */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-5 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+          {/* Trust list — stacked on mobile, inline on desktop */}
+          <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 md:gap-x-4 mb-5 animate-slide-up" style={{ animationDelay: '0.25s' }}>
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -93,14 +93,12 @@ export const Hero = () => {
                   <Star key={i} className="w-3 h-3 fill-accent text-accent" />
                 ))}
               </div>
-              4.9 (120+)
+              4.9 on Google (120+ reviews)
             </a>
-            <span className="text-border">·</span>
             <span className="text-sm text-muted-foreground flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-primary" />
               90-day guarantee
             </span>
-            <span className="text-border">·</span>
             <span className="text-sm text-muted-foreground flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-primary" />
               Same-day on most repairs

@@ -55,7 +55,7 @@ export const Testimonials = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto mb-6">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="relative p-6 bg-card rounded-xl border border-border">
+            <div key={index} className={`relative p-6 bg-card rounded-xl border border-border ${index >= 2 ? 'hidden md:block' : ''}`}>
               <div className="flex gap-1 mb-3">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-accent text-accent" />
