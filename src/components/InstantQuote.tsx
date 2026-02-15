@@ -37,10 +37,10 @@ export const InstantQuote = () => {
       <div className="container">
         <div className="text-center mb-6">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Instant estimate <span className="text-muted-foreground font-normal text-lg">(30 sec)</span>
+            Get an estimate on WhatsApp <span className="text-muted-foreground font-normal text-lg">(30 sec)</span>
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Choose your issue and location. We'll prefill a WhatsApp message.
+            Pick your issue and location. We'll prefill the message for you.
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export const InstantQuote = () => {
             Send estimate on WhatsApp
           </Button>
           <p className="text-xs text-muted-foreground mt-2.5 text-center">
-            Estimate only. Final quote confirmed before repair.
+            Estimate only. Final quote confirmed after quick checks.
           </p>
         </div>
       </div>
