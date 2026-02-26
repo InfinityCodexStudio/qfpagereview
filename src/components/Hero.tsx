@@ -107,6 +107,28 @@ export const Hero = () => {
         </div>
       </div>
 
+      {/* Insurance report banner */}
+      <div className="relative px-4 pb-2 md:pb-4">
+        <div className="container">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 px-4 py-3 rounded-lg bg-[hsl(120_60%_97%)] border border-[hsl(142_71%_85%)] text-sm">
+            <p className="text-muted-foreground">
+              <span className="mr-1.5">📋</span>
+              <span className="font-semibold text-foreground">Need an insurance report?</span>{' '}
+              Official device damage assessment: €35 upfront, deducted from your repair if you fix with us.
+            </p>
+            <a
+              href="https://wa.me/35699209313?text=Hi%2C%20I%27d%20like%20to%20request%20an%20insurance%20damage%20report%20for%20my%20device."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { source: 'insurance_banner' })}
+              className="inline-flex items-center gap-1 shrink-0 px-4 py-1.5 rounded-md border-2 border-primary text-primary text-xs font-semibold hover:bg-primary/5 transition-colors"
+            >
+              Request Report →
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Serving line */}
       <div className="relative pb-4 md:pb-8">
         <div className="container">
