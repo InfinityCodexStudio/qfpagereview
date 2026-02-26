@@ -117,7 +117,7 @@ export const Hero = () => {
               Official device damage assessment: €35 upfront, deducted from your repair if you fix with us.
             </p>
             <a
-              href="https://wa.me/35699209313?text=Hi%2C%20I%27d%20like%20to%20request%20an%20insurance%20damage%20report%20for%20my%20device."
+              href="https://wa.me/35699209313?text=Hi%2C%20I%20need%20an%20insurance%20report%20for%20my%20device.%0A%0ADevice%3A%20%5Bmodel%5D%0ADamage%3A%20%5Bdescribe%20issue%5D%0AInsurer%3A%20%5Byour%20insurance%20company%5D"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent('whatsapp_click', { source: 'insurance_banner' })}
