@@ -1,4 +1,4 @@
-import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone } from 'lucide-react';
+import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
 import repairBench from '@/assets/repair-bench.png';
@@ -112,7 +112,7 @@ export const Hero = () => {
         <div className="container">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 px-4 py-3 rounded-lg bg-[hsl(120_60%_97%)] border border-[hsl(142_71%_85%)] text-sm">
             <p className="text-muted-foreground">
-              <span className="mr-1.5">📋</span>
+              <ShieldCheck className="w-4 h-4 text-primary inline-block mr-1.5 shrink-0 -mt-0.5" />
               <span className="font-semibold text-foreground">Need an insurance report?</span>{' '}
               Official device damage assessment: €35 upfront, deducted from your repair if you fix with us.
             </p>
