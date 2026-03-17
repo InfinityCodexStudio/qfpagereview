@@ -23,18 +23,6 @@ export const FinalCTA = () => {
                 WhatsApp for a quick quote
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white bg-transparent hover:bg-white/10"
-              asChild
-              onClick={() => trackEvent('call_click', { source: 'final_cta' })}
-            >
-              <a href={LOCATIONS.zebbug.phoneUrl}>
-                <Phone className="w-5 h-5" />
-                Call us now
-              </a>
-            </Button>
           </div>
 
           <p className="text-primary-foreground/80 text-lg">
