@@ -1,19 +1,22 @@
-const steps = [
+import { MessageCircle, MapPin, Wrench } from 'lucide-react';
+import { ReactNode } from 'react';
+
+const steps: { step: string; icon: ReactNode; title: string; description: string }[] = [
   {
     step: '1',
-    emoji: '💬',
+    icon: <MessageCircle className="w-6 h-6 text-primary" />,
     title: 'Tell us the issue',
     description: 'WhatsApp, call, or fill in the form. Describe your device and the problem.',
   },
   {
     step: '2',
-    emoji: '📍',
+    icon: <MapPin className="w-6 h-6 text-primary" />,
     title: 'Visit or we collect',
     description: 'Walk into Żebbuġ or Fgura, or we collect from anywhere in Malta.',
   },
   {
     step: '3',
-    emoji: '🔧',
+    icon: <Wrench className="w-6 h-6 text-primary" />,
     title: 'We diagnose and repair',
     description: 'We check your device, give you a clear quote, then fix it. Many repairs done same day.',
   },
