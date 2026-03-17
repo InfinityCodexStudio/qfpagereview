@@ -51,11 +51,15 @@ export const Header = () => {
             src={logoFull} 
             alt="QuickFix Malta" 
             className="h-[30px] hidden sm:block w-auto object-contain"
+            width="120"
+            height="30"
           />
           <img 
             src={logoIcon} 
             alt="QuickFix Malta" 
             className="h-[26px] sm:hidden w-auto object-contain"
+            width="26"
+            height="26"
           />
         </Link>
 

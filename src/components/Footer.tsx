@@ -22,6 +22,8 @@ export const Footer = () => {
                 src={logoFull} 
                 alt="QuickFix Malta" 
                 className="h-10 brightness-0 invert"
+                width="160"
+                height="40"
               />
             </div>
             <p className="text-background/70 text-sm mb-4">
