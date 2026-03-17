@@ -135,75 +135,108 @@ export const Services = () => {
         </div>
       </div>
 
-      {/* Bottom sheet for repair details */}
-      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen}>
-        <DrawerContent className="max-h-[85vh]">
-          <DrawerHeader className="text-left pb-2">
-            <DrawerTitle className="text-lg font-bold text-foreground">
-              {selectedFix?.label}
-            </DrawerTitle>
-            <p className="text-sm text-primary font-semibold">{selectedFix?.price}</p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Final quote depends on model and parts.
-            </p>
-          </DrawerHeader>
+      {drawerOpen && selectedFix && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-50 bg-black/80"
+            onClick={() => setDrawerOpen(false)}
+          />
 
-          <div className="px-4 pb-6 space-y-4 overflow-y-auto">
-            {/* Location */}
-            <div>
-              <p className="text-sm font-medium text-muted-foreground mb-2">Location</p>
-              <div className="flex gap-2" data-vaul-no-drag>
-                {locationOptions.map((l) => (
-                  <button type="button" key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
-                    {l}
-                  </button>
-                ))}
+          {/* Fixed card — anchored to bottom, never scrolls the page */}
+          <div className="fixed inset-x-0 bottom-0 z-50 max-h-[85dvh] flex flex-col rounded-t-2xl border bg-background">
+
+            {/* Handle + close */}
+            <div className="flex items-center px-4 pt-3 pb-1">
+              <div className="mx-auto h-1.5 w-10 rounded-full bg-muted" />
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                className="ml-auto p-1 rounded-full hover:bg-secondary transition-colors"
+              >
+                <X className="w-5 h-5 text-muted-foreground" />
+              </button>
+            </div>
+
+            {/* Scrollable content area */}
+            <div className="overflow-y-auto overscroll-contain px-4 pb-6 space-y-4">
+
+              {/* Title */}
+              <h3 className="text-lg font-bold text-foreground">
+                {selectedFix.label}
+              </h3>
+              <p className="text-sm text-primary font-semibold -mt-2">
+                {selectedFix.price}
+              </p>
+              <p className="text-xs text-muted-foreground -mt-2">
+                Final quote depends on model and parts.
+              </p>
+
+              {/* Location chips */}
+              <div>
+                <p className="text-sm font-medium text-muted-foreground mb-2">Location</p>
+                <div className="flex gap-2" data-vaul-no-drag>
+                  {locationOptions.map((l) => (
+                    <button type="button" key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
+                      {l}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Speed */}
-            <div>
-              <p className="text-sm font-medium text-muted-foreground mb-2">Speed</p>
-              <div className="flex gap-2" data-vaul-no-drag>
-                {speedOptions.map((s) => (
-                  <button type="button" key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
-                    {s.label} <span className="text-xs opacity-70 ml-1">{s.note}</span>
-                  </button>
-                ))}
+              {/* Speed chips */}
+              <div>
+                <p className="text-sm font-medium text-muted-foreground mb-2">Speed</p>
+                <div className="flex gap-2" data-vaul-no-drag>
+                  {speedOptions.map((s) => (
+                    <button type="button" key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
+                      {s.label}{' '}
+                      <span className="text-xs opacity-70 ml-1">{s.note}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Pickup */}
-            <div>
-              <p className="text-sm font-medium text-muted-foreground mb-2">Pickup</p>
-              <div className="flex flex-wrap gap-2" data-vaul-no-drag>
-                {pickupOptions.map((p) => (
-                  <button type="button" key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
-                    {p.label} {p.note && <span className="text-xs opacity-70 ml-1">{p.note}</span>}
-                  </button>
-                ))}
+              {/* Pickup chips */}
+              <div>
+                <p className="text-sm font-medium text-muted-foreground mb-2">Pickup</p>
+                <div className="flex flex-wrap gap-2" data-vaul-no-drag>
+                  {pickupOptions.map((p) => (
+                    <button type="button" key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
+                      {p.label}
+                      {p.note && (
+                        <span className="text-xs opacity-70 ml-1">{p.note}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Brand/Model */}
-            <div>
-              <p className="text-sm font-medium text-muted-foreground mb-2">Brand / Model <span className="text-xs font-normal">(optional)</span></p>
-              <input
-                type="text"
-                value={model}
-                onChange={(e) => setModel(e.target.value)}
-                placeholder="e.g. iPhone 15, Galaxy S24"
-                className="w-full px-4 py-2.5 text-base rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-              />
-            </div>
+              {/* Brand/Model input */}
+              <div>
+                <p className="text-sm font-medium text-muted-foreground mb-2">
+                  Brand / Model{' '}
+                  <span className="text-xs font-normal">(optional)</span>
+                </p>
+                <input
+                  type="text"
+                  value={model}
+                  onChange={(e) => setModel(e.target.value)}
+                  placeholder="e.g. iPhone 15, Galaxy S24"
+                  className="w-full px-4 py-2.5 text-base rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                />
+              </div>
 
-            <Button variant="whatsapp" size="lg" className="w-full" onClick={handleSendWhatsApp}>
-              <MessageCircle className="w-4 h-4" />
-              Send on WhatsApp
-            </Button>
+              {/* Send button */}
+              <Button variant="whatsapp" size="lg" className="w-full" onClick={handleSendWhatsApp}>
+                <MessageCircle className="w-4 h-4" />
+                Send on WhatsApp
+              </Button>
+
+            </div>
           </div>
-        </DrawerContent>
-      </Drawer>
+        </>
+      )}
     </section>
   );
 };
