@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { chipClass } from '@/lib/chipClass';
 import { Smartphone, Monitor, Gamepad2, HardDrive, Tablet, Laptop, HelpCircle, MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose } from '@/components/ui/drawer';
@@ -69,12 +70,6 @@ export const Services = () => {
     setDrawerOpen(false);
   };
 
-  const chipClass = (selected: boolean) =>
-    `px-4 py-2.5 text-sm font-medium rounded-full border transition-all cursor-pointer ${
-      selected
-        ? 'bg-primary text-primary-foreground border-primary'
-        : 'bg-card text-foreground border-border hover:border-primary'
-    }`;
 
   return (
     <section id="services" className="py-10 md:py-16 bg-secondary">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { chipClass } from '@/lib/chipClass';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl } from '@/lib/tracking';
@@ -31,12 +32,6 @@ export const InstantQuote = () => {
     window.open(getWhatsAppUrl(message), '_blank');
   };
 
-  const chipClass = (selected: boolean) =>
-    `px-4 py-2.5 text-sm font-medium rounded-full border transition-all cursor-pointer ${
-      selected
-        ? 'bg-primary text-primary-foreground border-primary'
-        : 'bg-card text-foreground border-border hover:border-primary'
-    }`;
 
   return (
     <section className="py-8 md:py-12 bg-primary/[0.03]">
