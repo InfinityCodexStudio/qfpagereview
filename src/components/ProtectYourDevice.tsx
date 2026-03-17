@@ -126,3 +126,5 @@ export const ProtectYourDevice = () => {
     </section>
   );
 };
+
+export default ProtectYourDevice;

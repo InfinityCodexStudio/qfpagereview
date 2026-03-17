@@ -123,3 +123,5 @@ export const InstantQuote = () => {
     </section>
   );
 };
+
+export default InstantQuote;

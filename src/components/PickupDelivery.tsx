@@ -35,3 +35,5 @@ export const PickupDelivery = () => {
     </section>
   );
 };
+
+export default PickupDelivery;

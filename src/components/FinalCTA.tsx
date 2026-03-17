@@ -44,3 +44,5 @@ export const FinalCTA = () => {
     </section>
   );
 };
+
+export default FinalCTA;
