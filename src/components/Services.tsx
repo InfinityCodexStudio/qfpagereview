@@ -159,7 +159,7 @@ export const Services = () => {
             </div>
 
             {/* Scrollable content area */}
-            <div className="overflow-y-auto overscroll-contain px-4 pb-6 space-y-4">
+            <div className="overflow-y-auto overscroll-contain px-4 pb-24 space-y-4">
 
               {/* Title */}
               <h3 className="text-lg font-bold text-foreground">
