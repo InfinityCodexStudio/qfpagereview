@@ -40,11 +40,10 @@ export const Hero = () => {
       {/* Vertical fade: bottom fades into page */}
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
-      {/* Mobile: overlay only on top portion for text readability, image visible below */}
-      <div className="absolute inset-0 bg-background/[0.85] md:hidden" style={{ height: '60%' }} />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/[0.85] via-background/[0.40] to-transparent md:hidden" style={{ top: '55%' }} />
+      {/* Mobile: extra overlay for readability */}
+      <div className="absolute inset-0 bg-background/[0.60] md:hidden" />
 
-      <div className="container relative py-8 md:py-24 lg:py-28" style={{ minHeight: 'min(720px, 85vh)' }}>
+      <div className="container relative py-12 md:py-24 lg:py-28" style={{ minHeight: 'min(720px, 85vh)' }}>
         <div className="max-w-xl lg:max-w-[560px] text-left">
           {/* Location badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border text-sm font-medium text-muted-foreground mb-4 animate-fade-in">
