@@ -153,9 +153,9 @@ export const Services = () => {
             {/* Location */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Location</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2" data-vaul-no-drag>
                 {locationOptions.map((l) => (
-                  <button key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
+                  <button type="button" key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
                     {l}
                   </button>
                 ))}
@@ -165,9 +165,9 @@ export const Services = () => {
             {/* Speed */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Speed</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2" data-vaul-no-drag>
                 {speedOptions.map((s) => (
-                  <button key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
+                  <button type="button" key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
                     {s.label} <span className="text-xs opacity-70 ml-1">{s.note}</span>
                   </button>
                 ))}
@@ -177,9 +177,9 @@ export const Services = () => {
             {/* Pickup */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Pickup</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2" data-vaul-no-drag>
                 {pickupOptions.map((p) => (
-                  <button key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
+                  <button type="button" key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
                     {p.label} {p.note && <span className="text-xs opacity-70 ml-1">{p.note}</span>}
                   </button>
                 ))}
