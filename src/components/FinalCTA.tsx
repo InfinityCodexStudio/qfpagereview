@@ -1,4 +1,4 @@
-import { MessageCircle, Phone } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
 
@@ -23,19 +23,18 @@ export const FinalCTA = () => {
                 WhatsApp for a quick quote
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white bg-transparent hover:bg-white/10"
-              asChild
-              onClick={() => trackEvent('call_click', { source: 'final_cta' })}
-            >
-              <a href={LOCATIONS.zebbug.phoneUrl}>
-                <Phone className="w-5 h-5" />
-                Call us now
-              </a>
-            </Button>
           </div>
+
+          <p className="text-sm text-white/70 mt-3">
+            Or call us:{' '}
+            <a href="tel:+35627802501" className="text-white font-medium hover:underline" onClick={() => trackEvent('call_click', { source: 'final_cta', location: 'zebbug' })}>
+              Żebbuġ +356 2780 2501
+            </a>
+            {' · '}
+            <a href="tel:+35621317810" className="text-white font-medium hover:underline" onClick={() => trackEvent('call_click', { source: 'final_cta', location: 'fgura' })}>
+              Fgura +356 2131 7810
+            </a>
+          </p>
 
           <p className="text-primary-foreground/80 text-lg">
             Or walk into our Żebbuġ or Fgura shop, no appointment needed.
