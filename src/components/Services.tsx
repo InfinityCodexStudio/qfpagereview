@@ -165,9 +165,9 @@ export const Services = () => {
             {/* Speed */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Speed</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2" data-vaul-no-drag>
                 {speedOptions.map((s) => (
-                  <button key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
+                  <button type="button" key={s.label} onClick={() => setSpeed(s.label)} className={chipClass(speed === s.label)}>
                     {s.label} <span className="text-xs opacity-70 ml-1">{s.note}</span>
                   </button>
                 ))}
