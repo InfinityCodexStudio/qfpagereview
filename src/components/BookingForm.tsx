@@ -28,7 +28,6 @@ const issues = [
 ];
 
 export const BookingForm = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
