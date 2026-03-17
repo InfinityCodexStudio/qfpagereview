@@ -25,7 +25,7 @@ export const Hero = () => {
           src="/repair-bench.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-[right_center] md:object-[75%_80%]"
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-[75%_80%]"
           loading="eager"
           fetchPriority="high"
           width="1200"
