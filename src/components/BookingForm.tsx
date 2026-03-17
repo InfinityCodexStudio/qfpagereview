@@ -137,12 +137,8 @@ export const BookingForm = () => {
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : (
-                <>
-                  <Send className="w-5 h-5" />
-                  Submit request
-                </>
-              )}
+            <Send className="w-5 h-5" />
+              Submit via WhatsApp
             </Button>
 
             {/* WhatsApp fallback */}
