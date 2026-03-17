@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { chipClass } from '@/lib/chipClass';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl } from '@/lib/tracking';
