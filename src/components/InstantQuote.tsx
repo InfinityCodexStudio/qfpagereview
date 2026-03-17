@@ -34,7 +34,7 @@ export const InstantQuote = () => {
 
 
   return (
-    <section id="common-fixes" className="py-8 md:py-12 bg-primary/[0.03]">
+    <section id="common-fixes" className="py-8 md:py-12 bg-background">
       <div className="container">
         <div className="text-center mb-5">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
