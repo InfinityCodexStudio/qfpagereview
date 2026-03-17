@@ -16,6 +16,10 @@ const ProtectYourDevice = lazy(() => import('@/components/ProtectYourDevice'));
 const BookingForm = lazy(() => import('@/components/BookingForm'));
 const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 
+const SectionFallback = () => (
+  <div className="w-full animate-pulse bg-muted/40 rounded-lg mx-auto my-2" style={{ height: '120px' }} />
+);
+
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -24,16 +28,16 @@ const Index = () => {
       
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
-        <Suspense fallback={null}><Services /></Suspense>
-        <Suspense fallback={null}><InstantQuote /></Suspense>
-        <Suspense fallback={null}><HowItWorks /></Suspense>
-        <Suspense fallback={null}><PickupDelivery /></Suspense>
-        <Suspense fallback={null}><Locations /></Suspense>
-        <Suspense fallback={null}><Testimonials /></Suspense>
-        <Suspense fallback={null}><ProtectYourDevice /></Suspense>
-        <Suspense fallback={null}><FAQ /></Suspense>
-        <Suspense fallback={null}><BookingForm /></Suspense>
-        <Suspense fallback={null}><FinalCTA /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Services /></Suspense>
+        <Suspense fallback={<SectionFallback />}><InstantQuote /></Suspense>
+        <Suspense fallback={<SectionFallback />}><HowItWorks /></Suspense>
+        <Suspense fallback={<SectionFallback />}><PickupDelivery /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Locations /></Suspense>
+        <Suspense fallback={<SectionFallback />}><Testimonials /></Suspense>
+        <Suspense fallback={<SectionFallback />}><ProtectYourDevice /></Suspense>
+        <Suspense fallback={<SectionFallback />}><FAQ /></Suspense>
+        <Suspense fallback={<SectionFallback />}><BookingForm /></Suspense>
+        <Suspense fallback={<SectionFallback />}><FinalCTA /></Suspense>
       </main>
 
       <Footer />
