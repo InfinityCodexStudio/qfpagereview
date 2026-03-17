@@ -66,7 +66,7 @@ export const InstantQuote = () => {
               value={deviceModel}
               onChange={(e) => setDeviceModel(e.target.value)}
               placeholder="e.g. iPhone 15, Galaxy S24"
-              className="w-full px-4 py-2.5 text-sm rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+              className="w-full px-4 py-2.5 text-base rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
             />
           </div>
 
