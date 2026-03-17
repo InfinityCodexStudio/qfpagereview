@@ -177,9 +177,9 @@ export const Services = () => {
             {/* Pickup */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Pickup</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2" data-vaul-no-drag>
                 {pickupOptions.map((p) => (
-                  <button key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
+                  <button type="button" key={p.label} onClick={() => setPickup(p.value)} className={chipClass(pickup === p.value)}>
                     {p.label} {p.note && <span className="text-xs opacity-70 ml-1">{p.note}</span>}
                   </button>
                 ))}
