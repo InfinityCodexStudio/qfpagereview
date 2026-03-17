@@ -58,7 +58,7 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="py-10 md:py-16 bg-secondary">
+    <section id="faq" className="py-10 md:py-16 bg-background">
       <div className="container">
         <div className="text-center mb-8">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">

@@ -24,7 +24,7 @@ const steps: { step: string; icon: ReactNode; title: string; description: string
 
 export const HowItWorks = () => {
   return (
-    <section className="py-10 md:py-14 bg-background">
+    <section className="py-10 md:py-14 bg-secondary">
       <div className="container">
         <div className="text-center mb-6">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
