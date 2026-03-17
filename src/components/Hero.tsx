@@ -1,7 +1,7 @@
 import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
-import repairBench from '@/assets/repair-bench.webp';
+
 
 export const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -11,14 +11,27 @@ export const Hero = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Background image */}
-      <img
-        src={repairBench}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-[right_center] md:object-[75%_80%]"
-        loading="eager"
-        fetchPriority="high"
-      />
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcSet="/repair-bench-mobile.webp"
+          type="image/webp"
+        />
+        <source
+          srcSet="/repair-bench.webp"
+          type="image/webp"
+        />
+        <img
+          src="/repair-bench.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-[right_center] md:object-[75%_80%]"
+          loading="eager"
+          fetchPriority="high"
+          width="1200"
+          height="800"
+        />
+      </picture>
 
       {/* Horizontal scrim: left opaque → right transparent */}
       <div className="absolute inset-0 bg-gradient-to-r from-background/[0.95] via-background/[0.80] to-background/[0.12]" />
