@@ -122,6 +122,6 @@ export const InstantQuote = () => {
       </div>
     </section>
   );
-;
+};
 
 export default InstantQuote;

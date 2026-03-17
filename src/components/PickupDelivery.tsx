@@ -34,6 +34,6 @@ export const PickupDelivery = () => {
       </div>
     </section>
   );
-;
+};
 
 export default PickupDelivery;

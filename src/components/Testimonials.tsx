@@ -96,6 +96,6 @@ export const Testimonials = () => {
       </div>
     </section>
   );
-;
+};
 
 export default Testimonials;

@@ -43,6 +43,6 @@ export const FinalCTA = () => {
       </div>
     </section>
   );
-;
+};
 
 export default FinalCTA;

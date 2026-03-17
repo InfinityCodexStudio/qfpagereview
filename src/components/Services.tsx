@@ -212,6 +212,6 @@ export const Services = () => {
       </Drawer>
     </section>
   );
-;
+};
 
 export default Services;

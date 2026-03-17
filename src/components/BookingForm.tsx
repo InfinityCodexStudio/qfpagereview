@@ -166,6 +166,6 @@ export const BookingForm = () => {
       </div>
     </section>
   );
-;
+};
 
 export default BookingForm;
