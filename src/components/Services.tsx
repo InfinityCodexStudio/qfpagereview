@@ -153,9 +153,9 @@ export const Services = () => {
             {/* Location */}
             <div>
               <p className="text-sm font-medium text-muted-foreground mb-2">Location</p>
-              <div className="flex gap-2">
+              <div className="flex gap-2" data-vaul-no-drag>
                 {locationOptions.map((l) => (
-                  <button key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
+                  <button type="button" key={l} onClick={() => setLocation(l)} className={chipClass(location === l)}>
                     {l}
                   </button>
                 ))}
