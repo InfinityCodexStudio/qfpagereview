@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, MessageCircle, CheckCircle } from 'lucide-react';
+import { Send, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { trackEvent, getWhatsAppUrl } from '@/lib/tracking';
-import { useToast } from '@/hooks/use-toast';
+
 
 const issues = [
   { value: 'screen', label: 'Screen replacement' },
@@ -28,9 +28,6 @@ const issues = [
 ];
 
 export const BookingForm = () => {
-  const { toast } = useToast();
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -39,47 +36,14 @@ export const BookingForm = () => {
     notes: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     trackEvent('form_submit', { issue: formData.issue });
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
-
-  const handleWhatsAppFallback = () => {
-    const message = `Hi QuickFix, I'd like to book a repair.\n\nName: ${formData.name}\nDevice: ${formData.brandModel}\nIssue: ${formData.issue}\n\nThanks!`;
-    trackEvent('whatsapp_click', { source: 'form_fallback' });
+    const issueLabel = issues.find(i => i.value === formData.issue)?.label || formData.issue;
+    const message = `Hi QuickFix, I'd like to book a repair.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nIssue: ${issueLabel}\nDevice: ${formData.brandModel || 'Not specified'}\nNotes: ${formData.notes || 'None'}`;
     window.open(getWhatsAppUrl(message), '_blank');
   };
 
-  if (isSubmitted) {
-    return (
-      <section id="book" className="py-10 md:py-16 bg-secondary">
-        <div className="container">
-          <div className="max-w-xl mx-auto text-center p-8 bg-card rounded-xl border border-border">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-primary" />
-            </div>
-            <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-              Request received!
-            </h2>
-            <p className="text-muted-foreground mb-2">
-              Thanks {formData.name}. We'll contact you within 1 hour during business hours.
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              (Mon-Fri 10am-7pm, Sat 10am-2pm)
-            </p>
-            <Button variant="whatsapp" size="lg" onClick={handleWhatsAppFallback}>
-              <MessageCircle className="w-5 h-5" />
-              Or WhatsApp us now (fastest)
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="book" className="py-10 md:py-16 bg-secondary">
@@ -170,14 +134,10 @@ export const BookingForm = () => {
               variant="default"
               size="lg"
               className="w-full"
-              disabled={isSubmitting}
+              
             >
-              {isSubmitting ? 'Sending...' : (
-                <>
-                  <Send className="w-5 h-5" />
-                  Submit request
-                </>
-              )}
+            <Send className="w-5 h-5" />
+              Submit via WhatsApp
             </Button>
 
             {/* WhatsApp fallback */}
