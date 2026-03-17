@@ -29,8 +29,6 @@ const issues = [
 
 export const BookingForm = () => {
   const { toast } = useToast();
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -39,13 +37,12 @@ export const BookingForm = () => {
     notes: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     trackEvent('form_submit', { issue: formData.issue });
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    const issueLabel = issues.find(i => i.value === formData.issue)?.label || formData.issue;
+    const message = `Hi QuickFix, I'd like to book a repair.\n\nName: ${formData.name}\nPhone: ${formData.phone}\nIssue: ${issueLabel}\nDevice: ${formData.brandModel || 'Not specified'}\nNotes: ${formData.notes || 'None'}`;
+    window.open(getWhatsAppUrl(message), '_blank');
   };
 
   const handleWhatsAppFallback = () => {
