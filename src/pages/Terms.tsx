@@ -78,7 +78,7 @@ const Terms = () => {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">11. Contact</h2>
+            <h2 className="text-lg font-semibold text-foreground">12. Contact</h2>
             <p>For any queries regarding these terms, contact us at info@quickfixmalta.com or visit us at 2, Triq Luret Vella, Ħaż-Żebbuġ, ZBG 1971, Malta.</p>
           </section>
         </div>
