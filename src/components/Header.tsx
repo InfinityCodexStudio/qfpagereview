@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
@@ -45,7 +46,7 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-14 items-center justify-between">
         {/* Logo */}
-        <a href="#" onClick={scrollToTop} className="flex items-center">
+        <Link to="/" aria-label="QuickFix Malta home" className="flex items-center">
           <img 
             src={logoFull} 
             alt="QuickFix Malta" 
@@ -56,7 +57,7 @@ export const Header = () => {
             alt="QuickFix Malta" 
             className="h-[26px] sm:hidden w-auto object-contain"
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">

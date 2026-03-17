@@ -1,11 +1,21 @@
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 const Terms = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1 container max-w-3xl py-16 px-4">
+        <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
+        </button>
         <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
           Terms of Service
         </h1>
