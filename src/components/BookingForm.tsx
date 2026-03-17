@@ -45,38 +45,6 @@ export const BookingForm = () => {
     window.open(getWhatsAppUrl(message), '_blank');
   };
 
-  const handleWhatsAppFallback = () => {
-    const message = `Hi QuickFix, I'd like to book a repair.\n\nName: ${formData.name}\nDevice: ${formData.brandModel}\nIssue: ${formData.issue}\n\nThanks!`;
-    trackEvent('whatsapp_click', { source: 'form_fallback' });
-    window.open(getWhatsAppUrl(message), '_blank');
-  };
-
-  if (isSubmitted) {
-    return (
-      <section id="book" className="py-10 md:py-16 bg-secondary">
-        <div className="container">
-          <div className="max-w-xl mx-auto text-center p-8 bg-card rounded-xl border border-border">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-primary" />
-            </div>
-            <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-              Request received!
-            </h2>
-            <p className="text-muted-foreground mb-2">
-              Thanks {formData.name}. We'll contact you within 1 hour during business hours.
-            </p>
-            <p className="text-sm text-muted-foreground mb-6">
-              (Mon-Fri 10am-7pm, Sat 10am-2pm)
-            </p>
-            <Button variant="whatsapp" size="lg" onClick={handleWhatsAppFallback}>
-              <MessageCircle className="w-5 h-5" />
-              Or WhatsApp us now (fastest)
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="book" className="py-10 md:py-16 bg-secondary">
