@@ -25,6 +25,17 @@ export const FinalCTA = () => {
             </Button>
           </div>
 
+          <p className="text-sm text-white/70 mt-3">
+            Or call us:{' '}
+            <a href="tel:+35627802501" className="text-white font-medium hover:underline" onClick={() => trackEvent('call_click', { source: 'final_cta', location: 'zebbug' })}>
+              Żebbuġ +356 2780 2501
+            </a>
+            {' · '}
+            <a href="tel:+35621317810" className="text-white font-medium hover:underline" onClick={() => trackEvent('call_click', { source: 'final_cta', location: 'fgura' })}>
+              Fgura +356 2131 7810
+            </a>
+          </p>
+
           <p className="text-primary-foreground/80 text-lg">
             Or walk into our Żebbuġ or Fgura shop, no appointment needed.
           </p>
