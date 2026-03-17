@@ -30,8 +30,8 @@ const Index = () => {
         <Suspense fallback={null}><PickupDelivery /></Suspense>
         <Suspense fallback={null}><Locations /></Suspense>
         <Suspense fallback={null}><Testimonials /></Suspense>
-        <Suspense fallback={null}><FAQ /></Suspense>
         <Suspense fallback={null}><ProtectYourDevice /></Suspense>
+        <Suspense fallback={null}><FAQ /></Suspense>
         <Suspense fallback={null}><BookingForm /></Suspense>
         <Suspense fallback={null}><FinalCTA /></Suspense>
       </main>
