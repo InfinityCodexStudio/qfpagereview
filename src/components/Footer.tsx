@@ -124,8 +124,9 @@ export const Footer = () => {
           <div>
             <h3 className="font-display font-semibold mb-4">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#services" className="block text-background/70 hover:text-primary transition-colors">Services</a>
-              <a href="#common-fixes" className="block text-background/70 hover:text-primary transition-colors">Common Fixes</a>
+              <a href="#services" className="block text-background/70 hover:text-primary transition-colors">Common Fixes</a>
+              <a href="#common-fixes" className="block text-background/70 hover:text-primary transition-colors">Get a Quote</a>
+              <a href="#protect" className="block text-background/70 hover:text-primary transition-colors">Protect</a>
               <a href="#locations" className="block text-background/70 hover:text-primary transition-colors">Locations</a>
               <a href="#faq" className="block text-background/70 hover:text-primary transition-colors">FAQ</a>
               <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="block text-background/70 hover:text-primary transition-colors">Book a Repair</a>
