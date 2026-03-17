@@ -1,19 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
-import { InstantQuote } from '@/components/InstantQuote';
-import { ChooseYourSpeed } from '@/components/ChooseYourSpeed';
-import { HowItWorks } from '@/components/HowItWorks';
-import { PickupDelivery } from '@/components/PickupDelivery';
-import { Locations } from '@/components/Locations';
-import { Testimonials } from '@/components/Testimonials';
-import { ProtectYourDevice } from '@/components/ProtectYourDevice';
-import { FAQ } from '@/components/FAQ';
-import { BookingForm } from '@/components/BookingForm';
-import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { StickyCTA } from '@/components/StickyCTA';
 import { SEO } from '@/components/SEO';
+
+const Services = lazy(() => import('@/components/Services'));
+const InstantQuote = lazy(() => import('@/components/InstantQuote'));
+const HowItWorks = lazy(() => import('@/components/HowItWorks'));
+const PickupDelivery = lazy(() => import('@/components/PickupDelivery'));
+const Locations = lazy(() => import('@/components/Locations'));
+const Testimonials = lazy(() => import('@/components/Testimonials'));
+const FAQ = lazy(() => import('@/components/FAQ'));
+const ProtectYourDevice = lazy(() => import('@/components/ProtectYourDevice'));
+const BookingForm = lazy(() => import('@/components/BookingForm'));
+const FinalCTA = lazy(() => import('@/components/FinalCTA'));
 
 const Index = () => {
   return (
@@ -23,16 +24,18 @@ const Index = () => {
       
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
-        <Services />
-        <InstantQuote />
-        <HowItWorks />
-        <PickupDelivery />
-        <Locations />
-        <Testimonials />
-        <FAQ />
-        <ProtectYourDevice />
-        <BookingForm />
-        <FinalCTA />
+        <Suspense fallback={null}>
+          <Services />
+          <InstantQuote />
+          <HowItWorks />
+          <PickupDelivery />
+          <Locations />
+          <Testimonials />
+          <FAQ />
+          <ProtectYourDevice />
+          <BookingForm />
+          <FinalCTA />
+        </Suspense>
       </main>
 
       <Footer />

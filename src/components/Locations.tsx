@@ -106,4 +106,6 @@ export const Locations = () => {
       </div>
     </section>
   );
-};
+;
+
+export default Locations;

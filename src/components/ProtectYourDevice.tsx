@@ -125,4 +125,6 @@ export const ProtectYourDevice = () => {
       </div>
     </section>
   );
-};
+;
+
+export default ProtectYourDevice;
