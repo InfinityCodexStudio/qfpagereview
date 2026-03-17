@@ -135,7 +135,7 @@ export const BookingForm = () => {
               variant="default"
               size="lg"
               className="w-full"
-              disabled={isSubmitting}
+              
             >
             <Send className="w-5 h-5" />
               Submit via WhatsApp
