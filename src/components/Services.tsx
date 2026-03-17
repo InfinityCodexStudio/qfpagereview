@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { chipClass } from '@/lib/chipClass';
 import { Smartphone, Monitor, Gamepad2, HardDrive, Tablet, Laptop, HelpCircle, MessageCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerClose } from '@/components/ui/drawer';
 import { trackEvent, getWhatsAppUrl, getWhatsAppUrlForDataRecovery } from '@/lib/tracking';
 
 const fixes = [
