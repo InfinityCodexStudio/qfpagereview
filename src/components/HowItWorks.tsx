@@ -43,7 +43,7 @@ export const HowItWorks = () => {
               )}
               
               <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                <span className="text-2xl">{step.emoji}</span>
+                {step.icon}
                 <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
                   {step.step}
                 </span>
