@@ -7,9 +7,9 @@ import logoFull from '@/assets/QuickFix_logo_cropped_transparent.png';
 import logoIcon from '@/assets/QuickFix_icon_square_transparent.png';
 
 const navLinks = [
-  { href: '#services', label: 'Services' },
-  { href: '#common-fixes', label: 'Common Fixes' },
-  { href: '#locations', label: 'Locations' },
+  { href: '#services', label: 'Common Fixes' },
+  { href: '#common-fixes', label: 'Get a Quote' },
+  { href: '#protect', label: 'Protect' },
   { href: '#faq', label: 'FAQ' },
 ];
 
