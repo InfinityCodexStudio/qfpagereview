@@ -37,16 +37,16 @@ export const Header = () => {
     trackEvent('whatsapp_click', { source: 'header' });
   };
 
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
       <div className="container flex h-14 items-center justify-between">
         {/* Logo */}
-        <Link to="/" aria-label="QuickFix Malta home" className="flex items-center">
+        <Link to="/" aria-label="QuickFix Malta home" className="flex items-center" onClick={(e) => {
+          if (window.location.pathname === '/') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }}>
           <img 
             src={logoFull} 
             alt="QuickFix Malta" 
