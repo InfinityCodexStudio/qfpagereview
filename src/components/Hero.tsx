@@ -1,7 +1,7 @@
 import { Clock, Shield, Lock, MapPin, Star, MessageCircle, Phone, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, GOOGLE_REVIEWS_URL, LOCATIONS } from '@/lib/tracking';
-import repairBench from '@/assets/repair-bench.webp';
+
 
 export const Hero = () => {
   const handleWhatsAppClick = () => {
