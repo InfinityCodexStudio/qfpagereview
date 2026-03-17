@@ -24,18 +24,16 @@ const Index = () => {
       
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
-        <Suspense fallback={null}>
-          <Services />
-          <InstantQuote />
-          <HowItWorks />
-          <PickupDelivery />
-          <Locations />
-          <Testimonials />
-          <FAQ />
-          <ProtectYourDevice />
-          <BookingForm />
-          <FinalCTA />
-        </Suspense>
+        <Suspense fallback={null}><Services /></Suspense>
+        <Suspense fallback={null}><InstantQuote /></Suspense>
+        <Suspense fallback={null}><HowItWorks /></Suspense>
+        <Suspense fallback={null}><PickupDelivery /></Suspense>
+        <Suspense fallback={null}><Locations /></Suspense>
+        <Suspense fallback={null}><Testimonials /></Suspense>
+        <Suspense fallback={null}><FAQ /></Suspense>
+        <Suspense fallback={null}><ProtectYourDevice /></Suspense>
+        <Suspense fallback={null}><BookingForm /></Suspense>
+        <Suspense fallback={null}><FinalCTA /></Suspense>
       </main>
 
       <Footer />
