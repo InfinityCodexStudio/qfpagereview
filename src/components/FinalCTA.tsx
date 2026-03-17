@@ -1,4 +1,4 @@
-import { MessageCircle, Phone } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { trackEvent, getWhatsAppUrl, LOCATIONS } from '@/lib/tracking';
 
