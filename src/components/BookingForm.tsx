@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, MessageCircle } from 'lucide-react';
+import { Send, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -140,22 +140,23 @@ export const BookingForm = () => {
               Submit via WhatsApp
             </Button>
 
-            {/* WhatsApp fallback */}
-            <div className="text-center pt-4 border-t border-border">
-              <Button
-                type="button"
-                variant="whatsapp"
-                className="w-full"
-                asChild
-              >
+            <div className="flex gap-3 pt-4 border-t border-border">
+              <Button type="button" variant="cta" className="flex-1" asChild>
                 <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackEvent('whatsapp_click', { source: 'form_link' })}
+                  href="tel:+35627802501"
+                  onClick={() => trackEvent('call_click', { source: 'form', location: 'zebbug' })}
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  Or WhatsApp us now (fastest)
+                  <Phone className="w-4 h-4" />
+                  Call Żebbuġ
+                </a>
+              </Button>
+              <Button type="button" variant="cta" className="flex-1" asChild>
+                <a
+                  href="tel:+35621317810"
+                  onClick={() => trackEvent('call_click', { source: 'form', location: 'fgura' })}
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Fgura
                 </a>
               </Button>
             </div>
