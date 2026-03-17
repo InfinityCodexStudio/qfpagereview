@@ -70,12 +70,6 @@ export const Services = () => {
     setDrawerOpen(false);
   };
 
-  const chipClass = (selected: boolean) =>
-    `px-4 py-2.5 text-sm font-medium rounded-full border transition-all cursor-pointer ${
-      selected
-        ? 'bg-primary text-primary-foreground border-primary'
-        : 'bg-card text-foreground border-border hover:border-primary'
-    }`;
 
   return (
     <section id="services" className="py-10 md:py-16 bg-secondary">
