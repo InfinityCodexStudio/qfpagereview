@@ -11,7 +11,7 @@ const generateLocalBusinessSchema = () => {
     "email": EMAIL,
     "url": "https://quickfixmalta.com",
     "priceRange": "€€",
-    "image": "https://quickfixmalta.com/og-image.jpg",
+    "image": "https://quickfixmalta.com/og-image.png",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
